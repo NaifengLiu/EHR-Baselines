@@ -64,11 +64,9 @@ for fold_num in range(5):
             X.append(patients_info[matching[item][j]])
         y = np.concatenate((np.zeros(788) + 1, np.zeros(788)), axis=0)
         X = np.array(X)
-        print X.shape
-        print y.shape
         logistic = LogisticRegression()
         logistic.fit(X, y)
-        this_fold_test_result += logistic.predict_proba(test)[0]
-        this_fold_validation_result += logistic.predict_proba(validation_X)[0]
+        this_fold_test_result += logistic.predict_proba(test)[:, 0]
+        this_fold_validation_result += logistic.predict_proba(validation_X)[:, 0]
     np.savetxt("./result/fold_" + str(fold_num+1) + "_test", this_fold_test_result)
     np.savetxt("./result/fold_" + str(fold_num+1) + "_validation", this_fold_validation_result)
