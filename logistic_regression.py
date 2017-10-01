@@ -61,7 +61,7 @@ for fold_num in range(5):
         for item in tmp_training_names_positive:
             X.append(patients_info[item])
         for item in tmp_training_names_positive:
-            X.append(matching[item][j])
+            X.append(patients_info[matching[item][j]])
         y = np.concatenate((np.zeros(788) + 1, np.zeros(788)), axis=0)
         X = np.array(X)
         print X.shape
