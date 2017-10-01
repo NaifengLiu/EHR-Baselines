@@ -4,7 +4,7 @@ import numpy as np
 def cal_validation_result_by_mean(num):
     auc = np.zeros(10)
     for i in range(num):
-        v_result = np.loadtxt("result/fold_"+str(i+1)+"_validation").astype(float)
+        v_result = np.loadtxt("result/bagging_logistic_regression/fold_"+str(i+1)+"_validation").astype(float)
         v_rank = np.argsort(-v_result)
         v_found = 0
         count = 0
@@ -29,7 +29,7 @@ def cal_validation_result_by_combine(num):
     v_result_1 = np.array([])
     v_result_2 = np.array([])
     for i in range(num):
-        tmp_v_result = np.loadtxt("result/fold_"+str(i+1)+"_validation").astype(float)
+        tmp_v_result = np.loadtxt("result/bagging_logistic_regression/fold_"+str(i+1)+"_validation").astype(float)
         tmp_v_result_1 = tmp_v_result[:197]
         tmp_v_result_2 = tmp_v_result[197:]
 
@@ -58,7 +58,7 @@ def cal_test_result(num):
     auc = np.zeros(10)
     v_result = np.zeros(41004)
     for i in range(num):
-        v_result += np.loadtxt("result/fold_"+str(i+1)+"_test").astype(float)
+        v_result += np.loadtxt("result/bagging_logistic_regression/fold_"+str(i+1)+"_test").astype(float)
     v_rank = np.argsort(-v_result)
     v_found = 0
     count = 0
@@ -76,8 +76,13 @@ def cal_test_result(num):
     return result
 
 
+print "logistic regression result over validation set with method 1"
 print cal_validation_result_by_mean(5)
+print " "
 
+print "logistic regression result over validation set with method 2"
 print cal_validation_result_by_combine(5)
+print " "
 
+print "logistic regression result over test set"
 print cal_test_result(5)

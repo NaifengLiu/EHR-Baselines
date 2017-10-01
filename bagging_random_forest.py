@@ -2,7 +2,7 @@ import grouping
 import load_patient_info
 import numpy as np
 from tqdm import tqdm
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 
 matching = grouping.matching
 missing = [1, 3, 8, 72, 165, 183, 223, 239, 285, 305, 324, 348, 376, 416, 446, 461, 486, 489, 548, 575, 599, 612, 632,
@@ -40,15 +40,33 @@ test = np.array(test)
 
 #######################################################################################################################
 
-X = []
-for item in x_train_file_names_negative:
-    X.append(patients_info[item])
-for item in x_train_file_names_negative:
-    for non_patient in matching[item]:
-        X.append(patients_info[non_patient])
+for fold_num in range(5):
+    print("start " + str(fold_num + 1) + " fold")
+    tmp_validation_names_positive = x_train_file_names_positive[fold_num * 197:(fold_num + 1) * 197]
+    tmp_training_names_positive = \
+        [item for item in x_train_file_names_positive if item not in tmp_validation_names_positive]
 
-X_size = len(X)
-X = np.array(X)
+    validation_X = []
+    for patient in tmp_validation_names_positive:
+        validation_X.append(patients_info[patient])
+    for patient in tmp_validation_names_positive:
+        for non_patient in matching[patient]:
+            validation_X.append(patients_info[non_patient])
 
-y = np.concatenate((np.zeros(X_size/201) + 1, np.zeros(X_size-X_size/201)), axis=0)
+    this_fold_test_result = np.zeros(len(test))
+    this_fold_validation_result = np.zeros(197*201)
 
+    for j in tqdm(range(200)):
+        X = []
+        for item in tmp_training_names_positive:
+            X.append(patients_info[item])
+        for item in tmp_training_names_positive:
+            X.append(patients_info[matching[item][j]])
+        y = np.concatenate((np.zeros(788) + 1, np.zeros(788)), axis=0)
+        X = np.array(X)
+        clf = RandomForestClassifier(max_depth=2, random_state=0)
+        clf.fit(X, y)
+        this_fold_test_result += clf.predict_proba(test)[:, 1]
+        this_fold_validation_result += clf.predict_proba(validation_X)[:, 1]
+    np.savetxt("./result/fold_" + str(fold_num+1) + "_test", this_fold_test_result)
+    np.savetxt("./result/fold_" + str(fold_num+1) + "_validation", this_fold_validation_result)
