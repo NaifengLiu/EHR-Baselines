@@ -53,7 +53,7 @@ for fold_num in range(5):
             validation_X.append(patients_info[non_patient])
 
     this_fold_test_result = np.zeros(len(test))
-    this_fold_validation_result = np.zeros(197)
+    this_fold_validation_result = np.zeros(197*201)
 
     for j in range(5):
         X = []
