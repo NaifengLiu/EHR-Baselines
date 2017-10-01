@@ -66,7 +66,7 @@ for fold_num in range(5):
         X = np.array(X)
         logistic = LogisticRegression()
         logistic.fit(X, y)
-        this_fold_test_result += logistic.predict_proba(test)[:, 0]
-        this_fold_validation_result += logistic.predict_proba(validation_X)[:, 0]
+        this_fold_test_result += logistic.predict_proba(test)[:, 1]
+        this_fold_validation_result += logistic.predict_proba(validation_X)[:, 1]
     np.savetxt("./result/fold_" + str(fold_num+1) + "_test", this_fold_test_result)
     np.savetxt("./result/fold_" + str(fold_num+1) + "_validation", this_fold_validation_result)
