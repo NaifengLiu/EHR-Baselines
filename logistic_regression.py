@@ -36,7 +36,7 @@ from sklearn.linear_model import LogisticRegression
 
 logistic = LogisticRegression()
 
-X = np.random.randn(3, 4)
+X = np.random.randn(3, 400)
 y = [1, 0, 0]
 logistic.fit(X, y)
 
