@@ -1,6 +1,7 @@
 import grouping
 import load_patient_info
 import numpy as np
+from tqdm import tqdm
 from sklearn.linear_model import LogisticRegression
 
 matching = grouping.matching
@@ -55,7 +56,7 @@ for fold_num in range(5):
     this_fold_test_result = np.zeros(len(test))
     this_fold_validation_result = np.zeros(197*201)
 
-    for j in range(5):
+    for j in tqdm(range(5)):
         X = []
         for item in tmp_training_names_positive:
             X.append(patients_info[item])
@@ -63,6 +64,8 @@ for fold_num in range(5):
             X.append(matching[item][j])
         y = np.concatenate((np.zeros(788) + 1, np.zeros(788)), axis=0)
         X = np.array(X)
+        print X.shape
+        print y.shape
         logistic = LogisticRegression()
         logistic.fit(X, y)
         this_fold_validation_result += logistic.predict(validation_X)
