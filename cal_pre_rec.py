@@ -1,4 +1,10 @@
 import numpy as np
+from sklearn import metrics
+
+y = np.array([1, 1, 2, 2])
+pred = np.array([0.1, 0.4, 0.35, 0.8])
+fpr, tpr, thresholds = metrics.roc_curve(y, pred, pos_label=2)
+metrics.auc(fpr, tpr)
 
 
 def cal_validation_result_by_mean(method):
@@ -76,25 +82,25 @@ def cal_test_result(method):
     return result
 
 
-print "logistic regression result over validation set with method 1"
-print cal_validation_result_by_mean("logistic_regression")
-print " "
-
-print "logistic regression result over validation set with method 2"
-print cal_validation_result_by_combine("logistic_regression")
-print " "
-
-print "logistic regression result over test set"
-print cal_test_result("logistic_regression")
-print " "
-
-print "random forest result over validation set with method 1"
-print cal_validation_result_by_mean("random_forest")
-print " "
-
-print "random forest result over validation set with method 2"
-print cal_validation_result_by_combine("random_forest")
-print " "
-
-print "random forest result over test set"
-print cal_test_result("random_forest")
+# print "logistic regression result over validation set with method 1"
+# print cal_validation_result_by_mean("logistic_regression")
+# print " "
+#
+# print "logistic regression result over validation set with method 2"
+# print cal_validation_result_by_combine("logistic_regression")
+# print " "
+#
+# print "logistic regression result over test set"
+# print cal_test_result("logistic_regression")
+# print " "
+#
+# print "random forest result over validation set with method 1"
+# print cal_validation_result_by_mean("random_forest")
+# print " "
+#
+# print "random forest result over validation set with method 2"
+# print cal_validation_result_by_combine("random_forest")
+# print " "
+#
+# print "random forest result over test set"
+# print cal_test_result("random_forest")
