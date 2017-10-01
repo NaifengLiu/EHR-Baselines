@@ -29,27 +29,43 @@ for i in range(200):
     for item in x_test_file_names_positive:
         x_test_file_names_negative.append(matching[item][i])
 
-#######################################################################################################################
-
-
-X = []
-
-for i in range(100):
-    X.append(patients_info[x_train_file_names_positive[i]])
-for i in range(100):
-    X.append(patients_info[matching[x_train_file_names_positive[i]][0]])
-
 test = []
-for i in range(101, 200):
-    test.append(patients_info[x_train_file_names_positive[i]])
-
-X = np.array(X)
+for patient in x_test_file_names_positive:
+    test.append(patients_info[patient])
+for patient in x_test_file_names_positive:
+    for non_patient in matching[patient]:
+        test.append(patients_info[non_patient])
 test = np.array(test)
 
-y = np.concatenate((np.zeros(100) + 1, np.zeros(100)), axis=0)
+#######################################################################################################################
 
-logistic = LogisticRegression()
+for fold_num in range(5):
+    print("start " + str(fold_num + 1) + " fold")
+    tmp_validation_names_positive = x_train_file_names_positive[fold_num * 197:(fold_num + 1) * 197]
+    tmp_training_names_positive = \
+        [item for item in x_train_file_names_positive if item not in tmp_validation_names_positive]
 
-logistic.fit(X, y)
+    validation_X = []
+    for patient in tmp_validation_names_positive:
+        validation_X.append(patients_info[patient])
+    for patient in tmp_validation_names_positive:
+        for non_patient in matching[patient]:
+            validation_X.append(patients_info[non_patient])
 
-print logistic.predict(test)
+    this_fold_test_result = np.zeros(len(test))
+    this_fold_validation_result = np.zeros(197)
+
+    for j in range(5):
+        X = []
+        for item in tmp_training_names_positive:
+            X.append(patients_info[item])
+        for item in tmp_training_names_positive:
+            X.append(matching[item][j])
+        y = np.concatenate((np.zeros(788) + 1, np.zeros(788)), axis=0)
+        X = np.array(X)
+        logistic = LogisticRegression()
+        logistic.fit(X, y)
+        this_fold_validation_result += logistic.predict(validation_X)
+        print len(this_fold_validation_result)
+        print this_fold_validation_result.shape
+        print this_fold_validation_result
