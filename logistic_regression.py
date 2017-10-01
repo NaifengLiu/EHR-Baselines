@@ -8,11 +8,8 @@ missing = [1, 3, 8, 72, 165, 183, 223, 239, 285, 305, 324, 348, 376, 416, 446, 4
            682, 683, 718, 721, 757, 777, 792, 799, 816, 819, 998, 1023, 1034, 1075, 1080, 1118, 1123, 1132, 1146, 1166,
            1215]
 matching_keys = matching.keys()
-
 patients_info = load_patient_info.patients_info
-
 #######################################################################################################################
-
 x_train_file_names_positive = []
 x_test_file_names_positive = []
 
@@ -42,7 +39,12 @@ for i in range(100):
 for i in range(100):
     X.append(patients_info[matching[x_train_file_names_positive[i]][0]])
 
+test = []
+for i in range(101, 200):
+    test.append(patients_info[x_train_file_names_positive[i]])
+
 X = np.array(X)
+test = np.array(test)
 
 y = np.concatenate((np.zeros(100) + 1, np.zeros(100)), axis=0)
 
@@ -50,4 +52,4 @@ logistic = LogisticRegression()
 
 logistic.fit(X, y)
 
-print logistic.predict(X)
+print logistic.predict(test)
