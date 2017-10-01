@@ -56,7 +56,7 @@ for fold_num in range(5):
     this_fold_test_result = np.zeros(len(test))
     this_fold_validation_result = np.zeros(197*201)
 
-    for j in tqdm(range(5)):
+    for j in tqdm(range(200)):
         X = []
         for item in tmp_training_names_positive:
             X.append(patients_info[item])
@@ -68,7 +68,7 @@ for fold_num in range(5):
         print y.shape
         logistic = LogisticRegression()
         logistic.fit(X, y)
+        this_fold_test_result += logistic.predict(test)
         this_fold_validation_result += logistic.predict(validation_X)
-        print len(this_fold_validation_result)
-        print this_fold_validation_result.shape
-        print this_fold_validation_result
+    np.savetxt("./result/fold_" + str(fold_num+1) + "_test", this_fold_test_result)
+    np.savetxt("./result/fold_" + str(fold_num+1) + "_validation", this_fold_validation_result)
