@@ -77,5 +77,7 @@ def combine():
                     w.write("\n")
 
 
+process_hae()
+process_non_hae()
 combine()
 
