@@ -40,4 +40,4 @@ X = np.random.randn(3, 4)
 y = [1, 0, 0]
 logistic.fit(X, y)
 
-logistic.predict(X)
+print logistic.predict(X)
