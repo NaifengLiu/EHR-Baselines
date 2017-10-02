@@ -6,7 +6,7 @@ def cal_auc(method):
     v_result_1 = np.array([])
     v_result_2 = np.array([])
     for i in range(5):
-        tmp_v_result = np.loadtxt("result/bagging_" + method + "/fold_" + str(i + 1) + "_validation").astype(float)
+        tmp_v_result = np.loadtxt("result/bagging_" + method + "/fold_" + str(i + 1) + "_test").astype(float)
         tmp_v_result_1 = tmp_v_result[:197]
         tmp_v_result_2 = tmp_v_result[197:]
         v_result_1 = np.concatenate((v_result_1, tmp_v_result_1))
@@ -15,9 +15,6 @@ def cal_auc(method):
     y = np.concatenate((np.zeros(985) + 1, np.zeros(985*200)), axis=0)
     fpr, tpr, thresholds = metrics.roc_curve(y, pred, pos_label=1)
     print metrics.auc(fpr, tpr)
-    print fpr
-    print tpr
-    print thresholds
 
 
 def cal_validation_result_by_mean(method, size):
