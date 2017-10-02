@@ -7,7 +7,9 @@ def cal_auc(method):
     for i in range(5):
         v_result += np.loadtxt("result/bagging_" + method + "/fold_" + str(i + 1) + "_test").astype(float)
     pred = np.true_divide(v_result, 200)
+    print v_result.shape
     y = np.concatenate((np.zeros(1020) + 1, np.zeros(1020*200)), axis=0)
+    print y.shape
     fpr, tpr, thresholds = metrics.roc_curve(y, pred, pos_label=1)
     print metrics.auc(fpr, tpr)
 
