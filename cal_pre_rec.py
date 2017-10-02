@@ -111,4 +111,4 @@ def cal_test_result(method, size):
 # print "random forest result over test set"
 # print cal_test_result("random_forest", 204)
 
-print cal_auc("random_forest")
+print cal_auc("logistic_regression")
