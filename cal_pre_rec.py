@@ -92,13 +92,13 @@ def cal_test_result(method, size):
 # print cal_validation_result_by_mean("logistic_regression", 197)
 # print " "
 #
-# print "logistic regression result over validation set with method 2"
-# print cal_validation_result_by_combine("logistic_regression", 197)
-# print " "
-#
-# print "logistic regression result over test set"
-# print cal_test_result("logistic_regression", 204)
-# print " "
+print "logistic regression result over validation set with method 2"
+print cal_validation_result_by_combine("logistic_regression", 197)
+print " "
+
+print "logistic regression result over test set"
+print cal_test_result("logistic_regression", 204)
+print " "
 #
 # print "random forest result over validation set with method 1"
 # print cal_validation_result_by_mean("random_forest", 197)
