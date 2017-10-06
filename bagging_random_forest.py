@@ -17,14 +17,14 @@ for i in range(len(matching_keys)):
     else:
         x_test_file_names_positive.append((matching_keys[i]))
 
-x_train_file_names_negative = []
-for i in range(200):
-    for item in x_train_file_names_positive:
-        x_train_file_names_negative.append(matching[item][i])
-x_test_file_names_negative = []
-for i in range(200):
-    for item in x_test_file_names_positive:
-        x_test_file_names_negative.append(matching[item][i])
+# x_train_file_names_negative = []
+# for i in range(200):
+#     for item in x_train_file_names_positive:
+#         x_train_file_names_negative.append(matching[item][i])
+# x_test_file_names_negative = []
+# for i in range(200):
+#     for item in x_test_file_names_positive:
+#         x_test_file_names_negative.append(matching[item][i])
 
 test = []
 for patient in x_test_file_names_positive:
