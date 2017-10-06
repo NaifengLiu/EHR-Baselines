@@ -97,7 +97,7 @@ print cal_validation_result_by_combine("logistic_regression", 197)
 print " "
 
 print "logistic regression result over test set"
-print cal_test_result("logistic_regression", 204)
+print cal_test_result("logistic_regression", 248)
 print " "
 #
 # print "random forest result over validation set with method 1"
