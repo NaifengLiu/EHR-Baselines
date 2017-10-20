@@ -2,9 +2,9 @@ import numpy as np
 from sklearn import metrics
 from sklearn.metrics import precision_recall_curve
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report, confusion_matrix
-import matplotlib as mpl
-mpl.use('Agg')
-import matplotlib.pyplot as plt
+# import matplotlib as mpl
+# mpl.use('Agg')
+# import matplotlib.pyplot as plt
 
 
 def cal_auc(method):
@@ -111,19 +111,19 @@ def cal_pr(method):
     print v_score.shape
     y_test = np.concatenate((np.zeros(985) + 1, np.zeros(985*200)), axis=0)
     precision, recall, thresholds = precision_recall_curve(y_test, np.true_divide(v_score, 200))
-    plt.step(recall, precision, color='b', alpha=0.2,
-             where='post')
-    plt.fill_between(recall, precision, step='post', alpha=0.2,
-                     color='b')
+    # plt.step(recall, precision, color='b', alpha=0.2,
+    #          where='post')
+    # plt.fill_between(recall, precision, step='post', alpha=0.2,
+    #                  color='b')
+    #
+    # plt.xlabel('Recall')
+    # plt.ylabel('Precision')
+    # plt.ylim([0.0, 1.05])
+    # plt.xlim([0.0, 1.0])
+    # plt.savefig("tmp")
 
-    plt.xlabel('Recall')
-    plt.ylabel('Precision')
-    plt.ylim([0.0, 1.05])
-    plt.xlim([0.0, 1.0])
-    plt.savefig("tmp")
 
-
-cal_pr("logistic_regression_lasso")
+# cal_pr("logistic_regression_lasso")
 
 
 # print "logistic regression result over validation set with method 1"
