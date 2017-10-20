@@ -101,8 +101,8 @@ def cal_pr(method):
         v_result_2 = np.concatenate((v_result_2, tmp_v_result_2))
 
     v_score = np.concatenate((v_result_1, v_result_2))
+    print v_score.shape
     y_test = np.concatenate((np.zeros(788) + 1, np.zeros(788*200)), axis=0)
-    print v_score[0:20]
     precision, recall, _ = precision_recall_curve(y_test, np.true_divide(v_score, 200))
     print precision, recall
 
