@@ -71,9 +71,9 @@ for fold_num in range(5):
         validation_pred = logistic.predict(validation_X)
         validation_y = np.concatenate((np.zeros(197) + 1, np.zeros(197 * 200)), axis=0)
 
-    print(f1_score(validation_y, np.true_divide(validation_pred, 200), average="macro"))
-    print(precision_score(validation_y, np.true_divide(validation_pred, 200), average="macro"))
-    print(recall_score(validation_y, np.true_divide(validation_pred, 200), average="macro"))
+        print(f1_score(validation_y, np.true_divide(validation_pred, 200), average="macro"))
+        print(precision_score(validation_y, np.true_divide(validation_pred, 200), average="macro"))
+        print(recall_score(validation_y, np.true_divide(validation_pred, 200), average="macro"))
 
     np.savetxt("./result/bagging_logistic_regression/fold_" + str(fold_num+1) + "_test", this_fold_test_result)
     np.savetxt("./result/bagging_logistic_regression/fold_" + str(fold_num+1) + "_validation", this_fold_validation_result)
