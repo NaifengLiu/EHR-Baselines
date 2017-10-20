@@ -60,7 +60,7 @@ for fold_num in range(5):
             X.append(patients_info[matching[item][j]])
         y = np.concatenate((np.zeros(788) + 1, np.zeros(788)), axis=0)
         X = np.array(X)
-        logistic = LogisticRegression(penalty='l1', solver='liblinear')
+        logistic = LogisticRegression(penalty='l1')
         logistic.fit(X, y)
         this_fold_test_result += logistic.predict_proba(test)[:, 1]
         this_fold_validation_result += logistic.predict_proba(validation_X)[:, 1]
