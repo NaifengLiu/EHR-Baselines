@@ -117,13 +117,13 @@ cal_pr("logistic_regression_lasso")
 # print cal_validation_result_by_mean("logistic_regression", 197)
 # print " "
 #
-# print "logistic regression result over validation set with method 2"
-# print cal_validation_result_by_combine("logistic_regression", 197)
-# print " "
-#
-# print "logistic regression result over test set"
-# print cal_test_result("logistic_regression", 248)
-# print " "
+print "logistic regression result over validation set with method 2"
+print cal_validation_result_by_combine("logistic_regression", 197)
+print " "
+
+print "logistic regression result over test set"
+print cal_test_result("logistic_regression", 248)
+print " "
 #
 # print "logistic regression result over validation set with method"
 # print cal_validation_result_by_combine("logistic_regression_lasso", 197)
