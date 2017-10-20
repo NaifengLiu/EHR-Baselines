@@ -9,6 +9,6 @@ with open("data/combined_data") as f:
             patients_info[int(float(line_split[0]))].append(float(line_split[i]))
 
 
-# print patients_info[596215486]
+print len(patients_info[596215486])
 
 
