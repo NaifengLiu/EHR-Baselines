@@ -49,12 +49,13 @@ for fold_num in range(5):
 
     this_fold_test_result = np.zeros(len(test))
     this_fold_validation_result = np.zeros(197 * 201)
-
+    random.shuffle(negative_list)
     for j in tqdm(range(200)):
+
         X = []
         for item in tmp_training_names_positive:
             X.append(patients_info[item])
-        for item in negative_list[985*fold_num+j*788:985*fold_num+(j+1)*788]:
+        for item in negative_list[j*788:(j+1)*788]:
             X.append(patients_info[item])
         y = np.concatenate((np.zeros(788) + 1, np.zeros(788)), axis=0)
         X = np.array(X)
