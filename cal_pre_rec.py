@@ -104,7 +104,7 @@ def cal_pr(method):
     print v_score.shape
     y_test = np.concatenate((np.zeros(985) + 1, np.zeros(985*200)), axis=0)
     precision, recall, _ = precision_recall_curve(y_test, np.true_divide(v_score, 200))
-    print precision, recall
+    print precision.shape, recall.shape
 
 
 cal_pr("logistic_regression_lasso")
