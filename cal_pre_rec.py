@@ -1,5 +1,6 @@
 import numpy as np
 from sklearn import metrics
+from sklearn.metrics import precision_recall_curve
 
 
 def cal_auc(method):
@@ -88,6 +89,26 @@ def cal_test_result(method, size):
     return result
 
 
+def cal_pr(method):
+    v_result_1 = np.array([])
+    v_result_2 = np.array([])
+    for i in range(5):
+        tmp_v_result = np.loadtxt("result/bagging_" + method + "/fold_" + str(i + 1) + "_validation").astype(float)
+        tmp_v_result_1 = tmp_v_result[:197]
+        tmp_v_result_2 = tmp_v_result[197:]
+
+        v_result_1 = np.concatenate((v_result_1, tmp_v_result_1))
+        v_result_2 = np.concatenate((v_result_2, tmp_v_result_2))
+
+    v_score = np.concatenate((v_result_1, v_result_2))
+    y_test = np.concatenate((np.zeros(788) + 1, np.zeros(788*200)), axis=0)
+    precision, recall, _ = precision_recall_curve(y_test, np.true_divide(v_score, 200))
+    print precision, recall
+
+
+cal_auc("logistic_regression_lasso")
+
+
 # print "logistic regression result over validation set with method 1"
 # print cal_validation_result_by_mean("logistic_regression", 197)
 # print " "
@@ -100,13 +121,13 @@ def cal_test_result(method, size):
 # print cal_test_result("logistic_regression", 248)
 # print " "
 #
-print "logistic regression result over validation set with method"
-print cal_validation_result_by_combine("logistic_regression_lasso", 197)
-print " "
-
-print "logistic regression result over test set"
-print cal_test_result("logistic_regression_lasso", 248)
-print " "
+# print "logistic regression result over validation set with method"
+# print cal_validation_result_by_combine("logistic_regression_lasso", 197)
+# print " "
+#
+# print "logistic regression result over test set"
+# print cal_test_result("logistic_regression_lasso", 248)
+# print " "
 # #
 # print "random forest result over validation set with method 1"
 # print cal_validation_result_by_mean("random_forest", 197)
