@@ -29,7 +29,7 @@ test = np.array(test)
 #######################################################################################################################
 negative_list = []
 for item in x_train_file_names_positive:
-    for one in matching_keys[item]:
+    for one in matching[item]:
         negative_list.append(one)
 
 random.shuffle(negative_list)
