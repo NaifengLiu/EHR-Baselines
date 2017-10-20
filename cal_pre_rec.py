@@ -1,6 +1,8 @@
 import numpy as np
 from sklearn import metrics
 from sklearn.metrics import precision_recall_curve
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report, confusion_matrix
+
 
 
 def cal_auc(method):
@@ -104,8 +106,8 @@ def cal_pr(method):
     print v_score.shape
     y_test = np.concatenate((np.zeros(985) + 1, np.zeros(985*200)), axis=0)
     precision, recall, thresholds = precision_recall_curve(y_test, np.true_divide(v_score, 200))
-    print precision.shape
-    print precision[985*201/20]
+    print np.true_divide(v_score, 200)[0:20]
+    print(precision_score(y_test, np.true_divide(v_score, 200), average="macro"))
 
 
 cal_pr("logistic_regression_lasso")
