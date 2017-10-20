@@ -110,7 +110,7 @@ def cal_pr(method):
     print(precision_score(y_test, np.true_divide(v_score, 200), average="macro"))
 
 
-cal_pr("logistic_regression_lasso")
+# cal_pr("logistic_regression_lasso")
 
 
 # print "logistic regression result over validation set with method 1"
