@@ -106,7 +106,7 @@ def cal_pr(method):
     print precision, recall
 
 
-cal_auc("logistic_regression_lasso")
+cal_pr("logistic_regression_lasso")
 
 
 # print "logistic regression result over validation set with method 1"
