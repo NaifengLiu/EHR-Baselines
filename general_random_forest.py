@@ -13,7 +13,7 @@ x_train_file_names_positive = []
 x_test_file_names_positive = []
 
 for i in range(len(matching_keys)):
-    if len(x_train_file_names_positive) < 985:
+    if len(x_train_file_names_positive) < 600:
         x_train_file_names_positive.append(matching_keys[i])
     else:
         x_test_file_names_positive.append((matching_keys[i]))
@@ -32,7 +32,7 @@ test = np.array(test)
 
 for fold_num in range(5):
     print("start " + str(fold_num + 1) + " fold")
-    tmp_validation_names_positive = x_train_file_names_positive[fold_num * 197:(fold_num + 1) * 197]
+    tmp_validation_names_positive = x_train_file_names_positive[fold_num * 120:(fold_num + 1) * 120]
     tmp_training_names_positive = \
         [item for item in x_train_file_names_positive if item not in tmp_validation_names_positive]
 
@@ -44,7 +44,7 @@ for fold_num in range(5):
             validation_X.append(patients_info[non_patient])
 
     this_fold_test_result = np.zeros(len(test))
-    this_fold_validation_result = np.zeros(197*201)
+    this_fold_validation_result = np.zeros(len(validation_X))
 
     for j in tqdm(range(200)):
         X = []
@@ -52,7 +52,7 @@ for fold_num in range(5):
             X.append(patients_info[item])
         for item in tmp_training_names_positive:
             X.append(patients_info[matching[item][j]])
-        y = np.concatenate((np.zeros(788) + 1, np.zeros(788)), axis=0)
+        y = np.concatenate((np.zeros(480) + 1, np.zeros(480)), axis=0)
         X = np.array(X)
         clf = RandomForestClassifier(max_depth=2, random_state=0)
         clf.fit(X, y)
