@@ -55,8 +55,11 @@ def cal_validation_result_by_combine(method, size):
     v_result = np.concatenate((v_result_1, v_result_2))
     print v_result.shape
     v_rank = np.argsort(-v_result)
+    print v_rank[0]
     print v_result[v_rank[0]]
+    print v_rank[1]
     print v_result[v_rank[1]]
+    print v_rank[2]
     print v_result[v_rank[2]]
     v_found = 0
     count = 0
