@@ -5,7 +5,7 @@ from tqdm import tqdm
 from sklearn.ensemble import RandomForestClassifier
 import random
 
-matching = grouping.matching
+matching = grouping.random_matching
 matching_keys = matching.keys()
 patients_info = load_patient_info.patients_info
 #######################################################################################################################
@@ -18,6 +18,8 @@ for i in range(len(matching_keys)):
     else:
         x_test_file_names_positive.append((matching_keys[i]))
 
+random.shuffle(x_train_file_names_positive)
+
 test = []
 for patient in x_test_file_names_positive:
     test.append(patients_info[patient])
@@ -27,12 +29,6 @@ for patient in x_test_file_names_positive:
 test = np.array(test)
 
 #######################################################################################################################
-negative_list = []
-for item in x_train_file_names_positive:
-    for one in matching[item]:
-        negative_list.append(one)
-
-random.shuffle(negative_list)
 
 for fold_num in range(5):
     print("start " + str(fold_num + 1) + " fold")
@@ -48,20 +44,19 @@ for fold_num in range(5):
             validation_X.append(patients_info[non_patient])
 
     this_fold_test_result = np.zeros(len(test))
-    this_fold_validation_result = np.zeros(197 * 201)
-    random.shuffle(negative_list)
-    for j in tqdm(range(200)):
+    this_fold_validation_result = np.zeros(197*201)
 
+    for j in tqdm(range(200)):
         X = []
         for item in tmp_training_names_positive:
             X.append(patients_info[item])
-        for item in negative_list[j*788:(j+1)*788]:
-            X.append(patients_info[item])
+        for item in tmp_training_names_positive:
+            X.append(patients_info[matching[item][j]])
         y = np.concatenate((np.zeros(788) + 1, np.zeros(788)), axis=0)
         X = np.array(X)
         clf = RandomForestClassifier(max_depth=2, random_state=0)
         clf.fit(X, y)
         this_fold_test_result += clf.predict_proba(test)[:, 1]
         this_fold_validation_result += clf.predict_proba(validation_X)[:, 1]
-    np.savetxt("./result/random_forest/fold_" + str(fold_num + 1) + "_test", this_fold_test_result)
-    np.savetxt("./result/random_forest/fold_" + str(fold_num + 1) + "_validation", this_fold_validation_result)
+    np.savetxt("./result/random_forest_shuffle/fold_" + str(fold_num+1) + "_test", this_fold_test_result)
+    np.savetxt("./result/random_forest_shuffle/fold_" + str(fold_num+1) + "_validation", this_fold_validation_result)
