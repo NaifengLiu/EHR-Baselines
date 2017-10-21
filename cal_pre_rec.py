@@ -161,11 +161,16 @@ def cal_pr(method):
 # print cal_validation_result_by_mean("random_forest", 197)
 # print " "
 #
-print "logistic_regression result over validation set with method 2"
-print cal_validation_result_by_combine("logistic_regression", 197)
+# print "logistic_regression result over validation set with method 2"
+# print cal_validation_result_by_combine("logistic_regression", 197)
+# print " "
+# #
+# print "logistic_regression result over test set"
+# print cal_test_result("logistic_regression", 248)
+#
+print "random_forest_shuffle result over validation set with method 2"
+print cal_validation_result_by_combine("random_forest_shuffle", 197)
 print " "
 #
-print "logistic_regression result over test set"
-print cal_test_result("logistic_regression", 248)
-
-# print cal_auc("logistic_regression")
+print "random_forest_shuffle result over test set"
+print cal_test_result("random_forest_shuffle", 248)
