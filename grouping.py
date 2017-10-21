@@ -18,5 +18,7 @@ for item in matching_keys:
     for everyone in matching[item]:
          negative_patients.append(everyone)
 
+random.shuffle(negative_patients)
+
 for i in range(len(matching_keys)):
     random_matching[matching_keys[i]] = negative_patients[i*200:(i+1)*200]
