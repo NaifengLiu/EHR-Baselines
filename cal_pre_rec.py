@@ -176,20 +176,33 @@ r2 = []
 for i in [985, 950, 900, 850, 800, 750, 700, 650, 600, 550, 500, 450, 400, 350, 300, 250, 200, 150, 100, 50]:
     print i
     print " "
-    tmp = cal_validation_result_by_combine("random_forest_"+str(i), i/5)
-    r1.append(tmp)
-    print tmp
+    tmp_y = cal_validation_result_by_combine("random_forest_" + str(i), i / 5)
+    r1.append(tmp_y)
+    print tmp_y
     print " "
-    tmp = cal_test_result("random_forest_"+str(i), 1233-i)
-    r2.append(tmp)
-    print tmp
+    tmp_y = cal_test_result("random_forest_" + str(i), 1233 - i)
+    r2.append(tmp_y)
+    print tmp_y
     print " "
 
 b = [985, 950, 900, 850, 800, 750, 700, 650, 600, 550, 500, 450, 400, 350, 300, 250, 200, 150, 100, 50]
-tmp = []
-for item in r1:
-    tmp.append(item[0])
-plt.plot(tmp, b, '-')
-plt.savefig("new")
 
+for j in range(9):
+    tmp_x = []
+    for i in b:
+        tmp_x.append(1233 - i)
+    tmp_y = []
+    for item in r1:
+        tmp_y.append(item[j])
+    plt.plot(tmp_x, tmp_y, '-')
+    plt.savefig(str(j)+"v")
 
+for j in range(9):
+    tmp_x = []
+    for i in b:
+        tmp_x.append(1233 - i)
+    tmp_y = []
+    for item in r2:
+        tmp_y.append(item[j])
+    plt.plot(tmp_x, tmp_y, '-')
+    plt.savefig(str(j)+"t")
