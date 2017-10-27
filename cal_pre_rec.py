@@ -166,6 +166,6 @@ def cal_pr(method):
 # print "logistic_regression result over test set"
 # print cal_test_result("logistic_regression", 248)
 #
-print cal_validation_result_by_combine("random_forest_shuffle_400", 80)
+print cal_validation_result_by_combine("random_forest_shuffle", 160)
 print " "
-print cal_test_result("random_forest_shuffle_400", 833)
+print cal_test_result("random_forest_shuffle", 633)
