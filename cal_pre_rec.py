@@ -80,6 +80,7 @@ def cal_test_result(method, size):
     v_found = 0
     count = 0
     result = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    print v_rank[0:10]
     # print v_rank
     for j in v_rank:
         if j <= size:
