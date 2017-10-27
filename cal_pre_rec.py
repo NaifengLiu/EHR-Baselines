@@ -176,4 +176,4 @@ print cal_validation_result_by_combine("random_forest_shuffle_400", 80)
 print " "
 #
 print "random_forest_shuffle result over test set"
-print cal_test_result("random_forest_shuffle_400", 633)
+print cal_test_result("random_forest_shuffle_400", 833)
