@@ -65,5 +65,8 @@ def main(n):
         np.savetxt("./result/random_forest_"+str(n)+"/fold_" + str(fold_num+1) + "_validation", this_fold_validation_result)
 
 
-for i in [985, 950, 900, 850, 800, 750, 700, 650, 600, 550, 500, 450, 400, 350, 300, 250, 200, 150, 100, 50]:
+# for i in [985, 950, 900, 850, 800, 750, 700, 650, 600, 550, 500, 450, 400, 350, 300, 250, 200, 150, 100, 50]:
+#     main(i)
+
+for i in [100, 50]:
     main(i)
