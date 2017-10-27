@@ -55,12 +55,6 @@ def cal_validation_result_by_combine(method, size):
     v_result = np.concatenate((v_result_1, v_result_2))
     print v_result.shape
     v_rank = np.argsort(-v_result)
-    print v_rank[0]
-    print v_result[v_rank[0]]
-    print v_rank[1]
-    print v_result[v_rank[1]]
-    print v_rank[2]
-    print v_result[v_rank[2]]
     v_found = 0
     count = 0
     result = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -171,9 +165,6 @@ def cal_pr(method):
 # print "logistic_regression result over test set"
 # print cal_test_result("logistic_regression", 248)
 #
-print "random_forest_shuffle result over validation set with method 2"
-print cal_validation_result_by_combine("random_forest_shuffle_200", 40)
+print cal_validation_result_by_combine("random_forest_shuffle_5", 1)
 print " "
-#
-print "random_forest_shuffle result over test set"
-print cal_test_result("random_forest_shuffle_200", 866)
+print cal_test_result("random_forest_shuffle_5", 5)
