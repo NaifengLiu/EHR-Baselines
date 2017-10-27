@@ -53,7 +53,7 @@ def cal_validation_result_by_combine(method, size):
         v_result_2 = np.concatenate((v_result_2, tmp_v_result_2))
 
     v_result = np.concatenate((v_result_1, v_result_2))
-    print v_result.shape
+    # print v_result.shape
     v_rank = np.argsort(-v_result)
     v_found = 0
     count = 0
@@ -80,7 +80,7 @@ def cal_test_result(method, size):
     v_found = 0
     count = 0
     result = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    print v_rank[0:10]
+    # print v_rank[0:10]
     # print v_rank
     for j in v_rank:
         if j <= size:
@@ -106,7 +106,7 @@ def cal_pr(method):
         v_result_2 = np.concatenate((v_result_2, tmp_v_result_2))
 
     v_score = np.concatenate((v_result_1, v_result_2))
-    print v_score.shape
+    # print v_score.shape
     y_test = np.concatenate((np.zeros(985) + 1, np.zeros(985*200)), axis=0)
     precision, recall, thresholds = precision_recall_curve(y_test, np.true_divide(v_score, 200))
     # plt.step(recall, precision, color='b', alpha=0.2,
@@ -166,6 +166,15 @@ def cal_pr(method):
 # print "logistic_regression result over test set"
 # print cal_test_result("logistic_regression", 248)
 #
-print cal_validation_result_by_combine("random_forest_shuffle_100", 20)
-print " "
-print cal_test_result("random_forest_shuffle_100", 1133)
+# print cal_validation_result_by_combine("random_forest_shuffle_100", 20)
+# print " "
+# print cal_test_result("random_forest_shuffle_100", 1133)
+
+for i in [985, 950, 900, 850, 800, 750, 700, 650, 600, 550, 500, 450, 400, 350, 300, 250, 200, 150, 100, 50]:
+    print i
+    print " "
+    print cal_validation_result_by_combine("random_forest_"+str(i), i/5)
+    print " "
+    print cal_test_result("random_forest_"+str(i), 1233-i)
+    print " "
+
