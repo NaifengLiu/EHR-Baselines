@@ -13,7 +13,7 @@ x_train_file_names_positive = []
 x_test_file_names_positive = []
 
 for i in range(len(matching_keys)):
-    if len(x_train_file_names_positive) < 400:
+    if len(x_train_file_names_positive) < 200:
         x_train_file_names_positive.append(matching_keys[i])
     else:
         x_test_file_names_positive.append((matching_keys[i]))
@@ -32,7 +32,7 @@ test = np.array(test)
 
 for fold_num in range(5):
     print("start " + str(fold_num + 1) + " fold")
-    tmp_validation_names_positive = x_train_file_names_positive[fold_num * 80:(fold_num + 1) * 80]
+    tmp_validation_names_positive = x_train_file_names_positive[fold_num * 40:(fold_num + 1) * 40]
     tmp_training_names_positive = \
         [item for item in x_train_file_names_positive if item not in tmp_validation_names_positive]
 
@@ -52,11 +52,11 @@ for fold_num in range(5):
             X.append(patients_info[item])
         for item in tmp_training_names_positive:
             X.append(patients_info[matching[item][j]])
-        y = np.concatenate((np.zeros(320) + 1, np.zeros(320)), axis=0)
+        y = np.concatenate((np.zeros(160) + 1, np.zeros(160)), axis=0)
         X = np.array(X)
         clf = RandomForestClassifier(max_depth=2, random_state=0)
         clf.fit(X, y)
         this_fold_test_result += clf.predict_proba(test)[:, 1]
         this_fold_validation_result += clf.predict_proba(validation_X)[:, 1]
-    np.savetxt("./result/random_forest_shuffle_400/fold_" + str(fold_num+1) + "_test", this_fold_test_result)
-    np.savetxt("./result/random_forest_shuffle_400/fold_" + str(fold_num+1) + "_validation", this_fold_validation_result)
+    np.savetxt("./result/random_forest_shuffle_200/fold_" + str(fold_num+1) + "_test", this_fold_test_result)
+    np.savetxt("./result/random_forest_shuffle_200/fold_" + str(fold_num+1) + "_validation", this_fold_validation_result)
