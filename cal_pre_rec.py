@@ -167,4 +167,4 @@ def cal_pr(method):
 #
 print cal_validation_result_by_combine("random_forest_shuffle_5", 1)
 print " "
-print cal_test_result("random_forest_shuffle_5", 5)
+print cal_test_result("random_forest_shuffle_5", 1228)
