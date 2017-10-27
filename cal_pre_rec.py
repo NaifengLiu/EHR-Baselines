@@ -24,14 +24,14 @@ def cal_validation_result_by_mean(method, size):
         v_rank = np.argsort(-v_result)
         v_found = 0
         count = 0
-        result = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        result = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         # print v_rank
         for j in v_rank:
             if j <= size:
                 v_found += 1
             count += 1
             ratio = v_found / float(size)
-            if 1 <= int(ratio/0.05) <= 10:
+            if 1 <= int(ratio/0.05) <= 20:
                 if result[int(ratio/0.05)-1] == 0:
                     result[int(ratio/0.05)-1] = v_found / float(count) * 100
         result = np.array(result)
@@ -57,14 +57,14 @@ def cal_validation_result_by_combine(method, size):
     v_rank = np.argsort(-v_result)
     v_found = 0
     count = 0
-    result = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    result = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     # print v_rank
     for j in v_rank:
         if j <= size*5:
             v_found += 1
         count += 1
         ratio = v_found / float(size*5)
-        if 1 <= int(ratio / 0.05) <= 10:
+        if 1 <= int(ratio / 0.05) <= 20:
             if result[int(ratio / 0.05) - 1] == 0:
                 result[int(ratio / 0.05) - 1] = v_found / float(count) * 100
     result = np.array(result)
@@ -79,7 +79,7 @@ def cal_test_result(method, size):
     v_rank = np.argsort(-v_result)
     v_found = 0
     count = 0
-    result = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    result = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     print v_rank[0:10]
     # print v_rank
     for j in v_rank:
@@ -87,7 +87,7 @@ def cal_test_result(method, size):
             v_found += 1
         count += 1
         ratio = v_found / float(size)
-        if 1 <= int(ratio/0.05) <= 10:
+        if 1 <= int(ratio/0.05) <= 20:
             if result[int(ratio/0.05)-1] == 0:
                 result[int(ratio/0.05)-1] = v_found / float(count) * 100
     result = np.array(result)
