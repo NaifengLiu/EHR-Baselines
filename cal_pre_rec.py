@@ -2,9 +2,9 @@ import numpy as np
 from sklearn import metrics
 from sklearn.metrics import precision_recall_curve
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report, confusion_matrix
-# import matplotlib as mpl
-# mpl.use('Agg')
-# import matplotlib.pyplot as plt
+import matplotlib as mpl
+mpl.use('Agg')
+import matplotlib.pyplot as plt
 
 
 def cal_auc(method):
@@ -170,11 +170,26 @@ def cal_pr(method):
 # print " "
 # print cal_test_result("random_forest_shuffle_100", 1133)
 
+r1 = []
+r2 = []
+
 for i in [985, 950, 900, 850, 800, 750, 700, 650, 600, 550, 500, 450, 400, 350, 300, 250, 200, 150, 100, 50]:
     print i
     print " "
-    print cal_validation_result_by_combine("random_forest_"+str(i), i/5)
+    tmp = cal_validation_result_by_combine("random_forest_"+str(i), i/5)
+    r1.append(tmp)
+    print tmp
     print " "
-    print cal_test_result("random_forest_"+str(i), 1233-i)
+    tmp = cal_test_result("random_forest_"+str(i), 1233-i)
+    r2.append(tmp)
+    print tmp
     print " "
+
+b = [985, 950, 900, 850, 800, 750, 700, 650, 600, 550, 500, 450, 400, 350, 300, 250, 200, 150, 100, 50]
+tmp = []
+for item in r1:
+    tmp.append(item[0])
+plt.plot(tmp, b, '-')
+plt.savefig("new")
+
 
