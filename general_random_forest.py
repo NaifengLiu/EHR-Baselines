@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 import random
 import os
 
-matching = grouping.random_matching
+matching = grouping.matching
 matching_keys = matching.keys()
 patients_info = load_patient_info.patients_info
 
