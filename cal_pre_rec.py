@@ -196,6 +196,7 @@ for j in range(9):
         tmp_y.append(item[j])
     plt.plot(tmp_x, tmp_y, '-')
     plt.savefig(str(j)+"v")
+    plt.close()
 
 for j in range(9):
     tmp_x = []
@@ -206,3 +207,4 @@ for j in range(9):
         tmp_y.append(item[j])
     plt.plot(tmp_x, tmp_y, '-')
     plt.savefig(str(j)+"t")
+    plt.close()
