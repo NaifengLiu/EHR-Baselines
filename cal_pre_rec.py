@@ -148,12 +148,12 @@ def cal_pr(method):
 # print cal_validation_result_by_mean("random_forest", 197)
 # print " "
 # #
-# print "random forest result over validation set with method 2"
-# print cal_validation_result_by_combine("random_forest", 197)
-# print " "
-# #
-# print "random forest result over test set"
-# print cal_test_result("random_forest", 248)
+print "random forest result over validation set with method 2"
+print cal_validation_result_by_combine("random_forest", 197)
+print " "
+#
+print "random forest result over test set"
+print cal_test_result("random_forest", 248)
 
 # print "random forest result over validation set with method 1"
 # print cal_validation_result_by_mean("random_forest", 197)
@@ -169,42 +169,42 @@ def cal_pr(method):
 # print cal_validation_result_by_combine("random_forest_shuffle_100", 20)
 # print " "
 # print cal_test_result("random_forest_shuffle_100", 1133)
-
-r1 = []
-r2 = []
-
-for i in [985, 950, 900, 850, 800, 750, 700, 650, 600, 550, 500, 450, 400, 350, 300, 250, 200, 150, 100, 50]:
-    print i
-    print " "
-    tmp_y = cal_validation_result_by_combine("random_forest_" + str(i), i / 5)
-    r1.append(tmp_y)
-    print tmp_y
-    print " "
-    tmp_y = cal_test_result("random_forest_" + str(i), 1233 - i)
-    r2.append(tmp_y)
-    print tmp_y
-    print " "
-
-b = [985, 950, 900, 850, 800, 750, 700, 650, 600, 550, 500, 450, 400, 350, 300, 250, 200, 150, 100, 50]
-
-for j in range(9):
-    tmp_x = []
-    for i in b:
-        tmp_x.append(1233 - i)
-    tmp_y = []
-    for item in r1:
-        tmp_y.append(item[j])
-    plt.plot(tmp_x, tmp_y, '-')
-    plt.savefig(str(j)+"v")
-    plt.close()
-
-for j in range(9):
-    tmp_x = []
-    for i in b:
-        tmp_x.append(1233 - i)
-    tmp_y = []
-    for item in r2:
-        tmp_y.append(item[j])
-    plt.plot(tmp_x, tmp_y, '-')
-    plt.savefig(str(j)+"t")
-    plt.close()
+#
+# r1 = []
+# r2 = []
+#
+# for i in [985, 950, 900, 850, 800, 750, 700, 650, 600, 550, 500, 450, 400, 350, 300, 250, 200, 150, 100, 50]:
+#     print i
+#     print " "
+#     tmp_y = cal_validation_result_by_combine("random_forest_" + str(i), i / 5)
+#     r1.append(tmp_y)
+#     print tmp_y
+#     print " "
+#     tmp_y = cal_test_result("random_forest_" + str(i), 1233 - i)
+#     r2.append(tmp_y)
+#     print tmp_y
+#     print " "
+#
+# b = [985, 950, 900, 850, 800, 750, 700, 650, 600, 550, 500, 450, 400, 350, 300, 250, 200, 150, 100, 50]
+#
+# for j in range(9):
+#     tmp_x = []
+#     for i in b:
+#         tmp_x.append(1233 - i)
+#     tmp_y = []
+#     for item in r1:
+#         tmp_y.append(item[j])
+#     plt.plot(tmp_x, tmp_y, '-')
+#     plt.savefig(str(j)+"v")
+#     plt.close()
+#
+# for j in range(9):
+#     tmp_x = []
+#     for i in b:
+#         tmp_x.append(1233 - i)
+#     tmp_y = []
+#     for item in r2:
+#         tmp_y.append(item[j])
+#     plt.plot(tmp_x, tmp_y, '-')
+#     plt.savefig(str(j)+"t")
+#     plt.close()
