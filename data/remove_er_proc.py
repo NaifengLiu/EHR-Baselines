@@ -14,8 +14,9 @@ title_index = []
 for i in range(len(title)):
     if len(title[i].split("ER_")) != 2:
         if len(title[i].split("PRC_")) != 2:
-            title_index.append(i)
-            print title[i]
+            if len(title[i].split("lookback_")) != 2:
+                title_index.append(i)
+                print title[i]
 
 print title_index
 print len(title_index)
