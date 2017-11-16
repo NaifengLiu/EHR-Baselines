@@ -2,7 +2,7 @@ import numpy as np
 
 patients_info = dict()
 
-rx_dx = [26, 27, 28, 29, 30]
+rx_dx = [26, 27]
 
 with open("data/combined_data") as f:
     for line in f:
