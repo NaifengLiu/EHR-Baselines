@@ -41,7 +41,7 @@ for fold_num in range(5):
             validation_X.append(patients_info[non_patient])
 
     this_fold_test_result = np.zeros(len(test))
-    this_fold_validation_result = np.zeros(197*201)
+    this_fold_validation_result = np.zeros(len(validation_X))
 
     for j in tqdm(range(200)):
         X = []
@@ -51,7 +51,7 @@ for fold_num in range(5):
             X.append(patients_info[matching[item][j]])
         y = np.concatenate((np.zeros(788) + 1, np.zeros(788)), axis=0)
         X = np.array(X)
-        clf = RandomForestClassifier(max_depth=2, random_state=1)
+        clf = RandomForestClassifier(max_depth=2)
         clf.fit(X, y)
         this_fold_test_result += clf.predict_proba(test)[:, 1]
         this_fold_validation_result += clf.predict_proba(validation_X)[:, 1]
