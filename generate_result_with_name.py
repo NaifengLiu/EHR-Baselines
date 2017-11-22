@@ -23,9 +23,20 @@ for patient in x_test_file_names_positive:
     for non_patient in matching[patient]:
         test.append(non_patient)
 
-v_result = np.zeros(248*201)
+r_result = np.zeros(248*201)
 for i in range(5):
-    v_result += np.loadtxt("result/bagging_random_forest/fold_"+str(i+1)+"_test").astype(float)
+    r_result += np.loadtxt("result/bagging_random_forest/fold_"+str(i+1)+"_test").astype(float)
 
-for item in v_result:
-    print item
+l_result = np.zeros(248*201)
+for i in range(5):
+    l_result += np.loadtxt("result/bagging_logistic_regression/fold_"+str(i+1)+"_test").astype(float)
+
+
+with open("./result/combine_result", "w+") as w:
+    for i in range(len(r_result)):
+        w.write(test[i])
+        w.write(" ")
+        w.write(str(float(l_result[i]) / float(1000)))
+        w.write(" ")
+        w.write(str(float(r_result[i]) / float(1000)))
+        w.write("\n")
