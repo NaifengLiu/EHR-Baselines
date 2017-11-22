@@ -34,7 +34,7 @@ for i in range(5):
 
 with open("./result/combine_result", "w+") as w:
     for i in range(len(r_result)):
-        w.write(test[i])
+        w.write(str(test[i]))
         w.write(" ")
         w.write(str(float(l_result[i]) / float(1000)))
         w.write(" ")
