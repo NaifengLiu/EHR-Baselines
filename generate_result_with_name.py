@@ -31,10 +31,17 @@ l_result = np.zeros(248*201)
 for i in range(5):
     l_result += np.loadtxt("result/bagging_logistic_regression/fold_"+str(i+1)+"_test").astype(float)
 
+print len(test)
+print len(r_result)
 
 with open("./result/combine_result", "w+") as w:
     for i in range(len(r_result)):
         w.write(str(test[i]))
+        w.write(" ")
+        if i < 248:
+            w.write("1")
+        else:
+            w.write("0")
         w.write(" ")
         w.write(str(float(l_result[i]) / float(1000)))
         w.write(" ")
