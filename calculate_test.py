@@ -12,6 +12,12 @@ patients_info = load_patient_info.patients_info
 x_train_file_names_positive = []
 x_test_file_names_positive = []
 
+for i in range(len(matching_keys)):
+    if len(x_train_file_names_positive) < 985:
+        x_train_file_names_positive.append(matching_keys[i])
+    else:
+        x_test_file_names_positive.append((matching_keys[i]))
+
 test = []
 for patient in x_test_file_names_positive:
     test.append(patients_info[patient])
