@@ -41,7 +41,7 @@ def cal_validation_result_by_mean(method, size):
 
 
 def cal_validation_new(method, size):
-    auc = np.zeros(10)
+    auc = np.zeros(20)
     for i in range(5):
         v_result = np.loadtxt("result/"+method+"/fold_"+str(i+1)+"_validation").astype(float)
         v_rank = np.argsort(-v_result)
@@ -95,7 +95,7 @@ def cal_validation_result_by_combine(method, size):
 
 
 def cal_test_result(method, size):
-    auc = np.zeros(10)
+    auc = np.zeros(20)
     # v_result = np.zeros(size*201)
     # for i in range(5):
     #     v_result += np.loadtxt("result/"+method+"/fold_"+str(i+1)+"_test").astype(float)
