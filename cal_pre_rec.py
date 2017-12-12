@@ -43,7 +43,7 @@ def cal_validation_result_by_mean(method, size):
 def cal_validation_new(method, size):
     auc = np.zeros(10)
     for i in range(5):
-        v_result = np.loadtxt("result/bagging_"+method+"/fold_"+str(i+1)+"_validation").astype(float)
+        v_result = np.loadtxt("result/"+method+"/fold_"+str(i+1)+"_validation").astype(float)
         v_rank = np.argsort(-v_result)
         v_found = 0
         count = 0
