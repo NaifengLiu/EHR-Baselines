@@ -99,7 +99,7 @@ def cal_test_result(method, size):
     # v_result = np.zeros(size*201)
     # for i in range(5):
     #     v_result += np.loadtxt("result/"+method+"/fold_"+str(i+1)+"_test").astype(float)
-    v_result = np.load("result/"+method+"/test").astype(float)
+    v_result = np.loadtxt("result/"+method+"/test").astype(float)
     print v_result.shape
     v_rank = np.argsort(-v_result)
     v_found = 0
