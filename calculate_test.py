@@ -22,8 +22,12 @@ test = np.array(test)
 
 this_fold_test_result = np.zeros(len(test))
 
+print this_fold_test_result.shape
+
 for i in range(1000):
     loaded_model = pickle.load(open('./model/' + str(i) + '.sav', 'rb'))
-    this_fold_test_result += loaded_model.predict_proba(test)[:, 1]
+    tmp = loaded_model.predict_proba(test)[:, 1]
+    print tmp.shape
+    this_fold_test_result += tmp
 
 np.savetxt("./result/bagging_random_forest/test", this_fold_test_result)
