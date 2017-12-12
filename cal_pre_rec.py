@@ -40,6 +40,29 @@ def cal_validation_result_by_mean(method, size):
     return np.true_divide(auc, 5)
 
 
+def cal_validation_new(method, size):
+    auc = np.zeros(10)
+    for i in range(5):
+        v_result = np.loadtxt("result/bagging_"+method+"/fold_"+str(i+1)+"_validation").astype(float)
+        v_rank = np.argsort(-v_result)
+        v_found = 0
+        count = 0
+        result = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        # print v_rank
+        for j in v_rank:
+            if j <= size:
+                v_found += 1
+            count += 1
+            ratio = v_found / float(size)
+            if 1 <= int(ratio/0.05) <= 20:
+                if result[int(ratio/0.05)-1] == 0:
+                    result[int(ratio/0.05)-1] = v_found / float(count) * 100
+        result = np.array(result)
+        # print result
+        auc += result
+    return np.true_divide(auc, 5)
+
+
 def cal_validation_result_by_combine(method, size):
     auc = np.zeros(10)
     v_result_1 = np.array([])
@@ -73,9 +96,10 @@ def cal_validation_result_by_combine(method, size):
 
 def cal_test_result(method, size):
     auc = np.zeros(10)
-    v_result = np.zeros(size*201)
-    for i in range(5):
-        v_result += np.loadtxt("result/"+method+"/fold_"+str(i+1)+"_test").astype(float)
+    # v_result = np.zeros(size*201)
+    # for i in range(5):
+    #     v_result += np.loadtxt("result/"+method+"/fold_"+str(i+1)+"_test").astype(float)
+    v_result = np.load("result/"+method+"/test").astype(float)
     v_rank = np.argsort(-v_result)
     v_found = 0
     count = 0
@@ -128,13 +152,13 @@ def cal_pr(method):
 # print cal_validation_result_by_mean("bagging_logistic_regression", 197)
 # print " "
 #
-print "logistic regression result over validation set with method 2"
-print cal_validation_result_by_combine("bagging_logistic_regression", 197)
-print " "
-
-print "logistic regression result over test set"
-print cal_test_result("bagging_logistic_regression", 248)
-print " "
+# print "logistic regression result over validation set with method 2"
+# print cal_validation_result_by_combine("bagging_logistic_regression", 197)
+# print " "
+#
+# print "logistic regression result over test set"
+# print cal_test_result("bagging_logistic_regression", 248)
+# print " "
 #
 # print "logistic regression result over validation set with method"
 # print cal_validation_result_by_combine("bagging_logistic_regression_lasso", 197)
@@ -148,12 +172,14 @@ print " "
 # print cal_validation_result_by_mean("random_forest", 197)
 # print " "
 # #
-print "random forest result over validation set with method 2"
-print cal_validation_result_by_combine("bagging_random_forest", 197)
+print "random forest result over validation set"
+print cal_validation_new("bagging_random_forest", 197)
 print " "
 #
 print "random forest result over test set"
 print cal_test_result("bagging_random_forest", 248)
+
+
 
 # print "random forest result over validation set with method 1"
 # print cal_validation_result_by_mean("random_forest", 197)
