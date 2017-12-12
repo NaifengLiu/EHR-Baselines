@@ -3,10 +3,14 @@ import load_patient_info
 import numpy as np
 from tqdm import tqdm
 from sklearn.ensemble import RandomForestClassifier
+import pickle
 
 matching = grouping.matching
 matching_keys = matching.keys()
 patients_info = load_patient_info.patients_info
+
+count = 0
+
 #######################################################################################################################
 x_train_file_names_positive = []
 x_test_file_names_positive = []
@@ -53,7 +57,10 @@ for fold_num in range(5):
         X = np.array(X)
         clf = RandomForestClassifier(max_depth=2)
         clf.fit(X, y)
-        this_fold_test_result += clf.predict_proba(test)[:, 1]
+        # this_fold_test_result += clf.predict_proba(test)[:, 1]
         this_fold_validation_result += clf.predict_proba(validation_X)[:, 1]
-    np.savetxt("./result/bagging_random_forest/fold_" + str(fold_num+1) + "_test", this_fold_test_result)
+        filename = './model/' + str(count) + '.sav'
+        pickle.dump(clf, open(filename, 'wb'))
+        count += 1
+    # np.savetxt("./result/bagging_random_forest/fold_" + str(fold_num+1) + "_test", this_fold_test_result)
     np.savetxt("./result/bagging_random_forest/fold_" + str(fold_num+1) + "_validation", this_fold_validation_result)
