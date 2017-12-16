@@ -59,7 +59,7 @@ for fold_num in range(5):
         clf.fit(X, y)
         # this_fold_test_result += clf.predict_proba(test)[:, 1]
         # this_fold_validation_result += clf.predict_proba(validation_X)[:, 1]
-        this_fold_validation_result += clf.predict(validation_X)[:, 1]
+        this_fold_validation_result += clf.predict(validation_X)
         filename = './model/' + str(count) + '.sav'
         pickle.dump(clf, open(filename, 'wb'))
         count += 1
