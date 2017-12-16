@@ -58,9 +58,10 @@ for fold_num in range(5):
         clf = RandomForestClassifier(max_depth=2)
         clf.fit(X, y)
         # this_fold_test_result += clf.predict_proba(test)[:, 1]
-        this_fold_validation_result += clf.predict_proba(validation_X)[:, 1]
+        # this_fold_validation_result += clf.predict_proba(validation_X)[:, 1]
+        this_fold_validation_result += clf.predict(validation_X)[:, 1]
         filename = './model/' + str(count) + '.sav'
         pickle.dump(clf, open(filename, 'wb'))
         count += 1
     # np.savetxt("./result/bagging_random_forest/fold_" + str(fold_num+1) + "_test", this_fold_test_result)
-    np.savetxt("./result/bagging_random_forest/fold_" + str(fold_num+1) + "_validation", this_fold_validation_result)
+    np.savetxt("./result/bagging_random_forest/fold_" + str(fold_num+1) + "_validation_predict", this_fold_validation_result)
