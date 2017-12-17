@@ -30,6 +30,6 @@ for i in range(5):
     overall_r += float(tp) / float(tp + fn)
     print ""
 
-print "overall precision: " + overall_p / float(5)
+print "overall precision: " + str(overall_p / float(5))
 print ""
-print "overall recall: " + overall_r / float(5)
+print "overall recall: " + str(overall_r / float(5))
