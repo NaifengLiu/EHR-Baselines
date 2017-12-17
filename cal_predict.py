@@ -2,13 +2,13 @@ import numpy as np
 
 size = 197
 
-tp = 0
-tn = 0
-fp = 0
-fn = 0
 
 auc = np.zeros(20)
 for i in range(5):
+    tp = 0
+    tn = 0
+    fp = 0
+    fn = 0
     v_result = np.loadtxt("result/bagging_random_forest/fold_" + str(i + 1) + "_validation_predict").astype(float)
     for j in range(len(v_result)):
         if v_result[j] / float(200) >= 0.5 and j <= size:
