@@ -2,7 +2,6 @@ import numpy as np
 
 size = 197
 
-
 auc = np.zeros(20)
 for i in range(5):
     tp = 0
@@ -20,5 +19,5 @@ for i in range(5):
         elif v_result[j] / float(200) < 0.5 and j > size:
             tn += 1
     print tp, tn, fp, fn
-    print float(tp)/float(tp+fp)
-    print float(tp)/float(tp+fn)
+    print "fold " + str(i) + " precision: " + str(float(tp) / float(tp + fp))
+    print "fold " + str(i) + " recall: " + str(float(tp) / float(tp + fn))
