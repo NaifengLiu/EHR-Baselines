@@ -20,3 +20,5 @@ for i in range(5):
         elif v_result[j] / float(200) < 0.5 and j > size:
             tn += 1
     print tp, tn, fp, fn
+    print float(tp)/float(tp+fp)
+    print float(tp)/float(tp+fn)
