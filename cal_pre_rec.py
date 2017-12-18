@@ -197,11 +197,11 @@ def cal_pr(method):
 # print " "
 # #
 print "random forest result over validation set"
-print cal_validation_new("bagging_random_forest", 197)
+print cal_validation_p("bagging_random_forest", 197)
 print " "
 #
-print "random forest result over test set"
-print cal_test_result("bagging_random_forest", 248)
+# print "random forest result over test set"
+# print cal_test_result("bagging_random_forest", 248)
 
 
 
