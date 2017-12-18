@@ -67,6 +67,7 @@ def cal_validation_p(method, size):
     auc = np.zeros(20)
     for i in range(5):
         v_result = np.loadtxt("result/"+method+"/fold_"+str(i+1)+"_validation_predict").astype(float)
+        print v_result[0:20]
         v_rank = np.argsort(-v_result)
         v_found = 0
         count = 0
