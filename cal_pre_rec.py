@@ -63,6 +63,29 @@ def cal_validation_new(method, size):
     return np.true_divide(auc, 5)
 
 
+def cal_validation_p(method, size):
+    auc = np.zeros(20)
+    for i in range(5):
+        v_result = np.loadtxt("result/"+method+"/fold_"+str(i+1)+"_validation_predict").astype(float)
+        v_rank = np.argsort(-v_result)
+        v_found = 0
+        count = 0
+        result = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        # print v_rank
+        for j in v_rank:
+            if j <= size:
+                v_found += 1
+            count += 1
+            ratio = v_found / float(size)
+            if 1 <= int(ratio/0.05) <= 20:
+                if result[int(ratio/0.05)-1] == 0:
+                    result[int(ratio/0.05)-1] = v_found / float(count) * 100
+        result = np.array(result)
+        # print result
+        auc += result
+    return np.true_divide(auc, 5)
+
+
 def cal_validation_result_by_combine(method, size):
     auc = np.zeros(10)
     v_result_1 = np.array([])
