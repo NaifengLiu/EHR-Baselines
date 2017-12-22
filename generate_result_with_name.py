@@ -31,7 +31,7 @@ for patient in x_test_file_names_positive:
 # for i in range(5):
 #     l_result += np.loadtxt("result/bagging_logistic_regression/fold_"+str(i+1)+"_test").astype(float)
 
-result = np.loadtxt("result/bagging_logistic_regression/test").astype(float)
+result = np.loadtxt("result/bagging_random_forest/test").astype(float)
 
 print len(test)
 print len(result)
