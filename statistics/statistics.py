@@ -39,11 +39,6 @@ def get_top_m_events_from_n_patients(patient, m, n):
 
 
 print "hae patients:"
-print ""
 get_top_m_events_from_n_patients(hae_patient, 10, 100)
-print ""
-print ""
-print ""
 print "non hae patients:"
-print ""
 get_top_m_events_from_n_patients(non_hae_patient, 10, 100)
