@@ -58,7 +58,6 @@ for fold_num in range(5):
 
     this_fold_test_result = np.zeros(len(test))
     this_fold_validation_result = np.zeros(len(validation_X))
-
     for j in tqdm(range(200)):
         X = []
         for item in tmp_training_names_positive:
