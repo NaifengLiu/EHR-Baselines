@@ -84,7 +84,8 @@ def get_top_m_events(patient, m):
         print item
 
 
-get_top_m_events(hae_patient, 2901)
+# get_top_m_events(hae_patient, 2901)
+
 get_top_m_events(non_hae_patient, 2901)
 
 
