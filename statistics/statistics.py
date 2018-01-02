@@ -73,10 +73,10 @@ def get_top_m_events(patient, m):
         # print
         person = patient.keys()[i]
         counter = collections.Counter(patient[person])
-        for i in range(len(counter.keys())):
-            if counter.keys()[i] not in event_dict:
-                event_dict[counter.keys()[i]] = []
-            event_dict[counter.keys()[i]].append(counter.values()[i])
+        for j in range(len(counter.keys())):
+            if counter.keys()[j] not in event_dict:
+                event_dict[counter.keys()[j]] = []
+            event_dict[counter.keys()[j]].append(counter.values()[j])
     for event in event_dict.keys():
         tmp = np.pad(event_dict[event], (0, len(hae_patient.keys())-len(event_dict[event])), 'constant')
         result.append([event, np.var(tmp)])
