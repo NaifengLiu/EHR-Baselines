@@ -78,7 +78,7 @@ def get_top_m_events(patient, m):
                 event_dict[counter.keys()[j]] = []
             event_dict[counter.keys()[j]].append(counter.values()[j])
     for event in event_dict.keys():
-        tmp = np.pad(event_dict[event], (0, len(hae_patient.keys())-len(event_dict[event])), 'constant')
+        tmp = np.pad(event_dict[event], (0, len(patient.keys())-len(event_dict[event])), 'constant')
         result.append([event, np.var(tmp)])
     result.sort(key=lambda x: x[1], reverse=True)
     for item in result[0:m]:
