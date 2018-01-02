@@ -16,6 +16,7 @@ def check_total_events():
                 events.append(line_split[1])
         f.close()
     with open("data/nonhae.csv") as f:
+        print type(f.readlines())
         for i in tqdm(range(len(f.readlines()))):
             line = f.readlines()[i]
             line_split = line.rstrip().split(",")
