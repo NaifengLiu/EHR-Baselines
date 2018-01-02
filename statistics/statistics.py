@@ -32,8 +32,9 @@ def check_total_events():
 
 def fill_with_data(patient, file_address):
     with open(file_address) as f:
-        for i in tqdm(range(len(f.readlines()))):
-            line = f.readlines()[i]
+        lines = f.readlines()
+        for i in tqdm(range(len(lines))):
+            line = lines[i]
             line_split = line.rstrip().split(",")
             if line_split[0] not in patient:
                 patient[line_split[0]] = []
