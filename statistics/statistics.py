@@ -26,12 +26,14 @@ def check_total_events():
     print len(events)
 
 
-check_total_events()
+# check_total_events()
+# totally 58030 events
 
 
 def fill_with_data(patient, file_address):
     with open(file_address) as f:
-        for line in f:
+        for i in tqdm(range(len(f.readlines()))):
+            line = f.readlines()[i]
             line_split = line.rstrip().split(",")
             if line_split[0] not in patient:
                 patient[line_split[0]] = []
@@ -40,8 +42,8 @@ def fill_with_data(patient, file_address):
     return patient
 
 
-# fill_with_data(hae_patient, "data/hae_all_1.csv")
-# fill_with_data(non_hae_patient, "data/nonhae_all_1.csv")
+fill_with_data(hae_patient, "data/hae_all_1.csv")
+fill_with_data(non_hae_patient, "data/nonhae.csv")
 
 
 def get_top_m_events_from_n_patients(patient, m, n):
@@ -63,15 +65,36 @@ def get_top_m_events_from_n_patients(patient, m, n):
     return all_results
 
 
-print "hae patients:"
+def get_top_m_events(patient, m):
+    result = []
+    event_dict = dict()
+    for i in tqdm(range(len(patient.keys()))):
+        # print
+        person = patient.keys()[i]
+        counter = collections.Counter(patient[person])
+        for i in range(len(counter.keys())):
+            if counter.keys()[i] not in event_dict:
+                event_dict[counter.keys()[i]] = []
+            event_dict[counter.keys()[i]].append(counter.values()[i])
+    for event in event_dict.keys():
+        tmp = np.pad(event_dict[event], (0, len(hae_patient.keys())-len(event_dict[event])), 'constant')
+        result.append([event, np.var(tmp)])
+    result.sort(key=lambda x: x[1], reverse=True)
+    for item in result[0:m]:
+        print item
+
+
+get_top_m_events(hae_patient, 2901)
+get_top_m_events(non_hae_patient, 2901)
+
+
 # hae_result = get_top_m_events_from_n_patients(hae_patient, 10, 100)
-print "non hae patients:"
 # non_hae_result = get_top_m_events_from_n_patients(non_hae_patient, 10, 100)
 #
-# all_days = np.arange('2010-01-01', '2015-08-01', dtype='datetime64[D]')
-# days_tmp = []
-# for d in all_days:
-#     days_tmp.append(str(d).replace("-", ""))
+all_days = np.arange('2010-01-01', '2015-08-01', dtype='datetime64[D]')
+days_tmp = []
+for d in all_days:
+    days_tmp.append(str(d).replace("-", ""))
 
 
 def generate_matrix(patient_type, original_file_path, previous_result):
