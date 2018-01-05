@@ -1,8 +1,8 @@
 import numpy as np
+from datetime import datetime
 
-all_days = np.arange('2010-01-01', '2015-07-31', dtype='datetime64[D]')
-
-day_dict = dict()
-for day in all_days:
-    day_dict[str(day).replace("-", "")] = 0
-
+print str(datetime.now()) + "   1"
+previous_person_matrix = np.zeros((4019, 2038))
+print str(datetime.now()) + "   2"
+np.savetxt("text", previous_person_matrix)
+print str(datetime.now()) + "   3"
