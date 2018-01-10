@@ -11,7 +11,7 @@ non_hae_folder_path = "./data/person/nonhae"
 hae_file_names = os.listdir(hae_folder_path)
 hae_file_names_length = len(hae_file_names)
 
-non_hae_file_names = os.listdir(non_hae_folder_path)
+non_hae_file_names = os.listdir(non_hae_folder_path)[0:1233*20]
 non_hae_file_names_length = len(non_hae_file_names)
 
 print "start generating matrix"
