@@ -2,6 +2,8 @@ from sklearn.neighbors import KNeighborsClassifier
 import numpy as np
 import os
 
+print "loading folder"
+
 hae_folder_path = "./data/person/hae"
 non_hae_folder_path = "./data/person/nonhae"
 
@@ -11,19 +13,29 @@ hae_file_names_length = len(hae_file_names)
 non_hae_file_names = os.listdir(non_hae_folder_path)
 non_hae_file_names_length = len(non_hae_file_names)
 
+print "start generating matrix"
+
 X = []
 y = []
+
+print "entering hae patients"
 
 for item in hae_file_names[0:int(hae_file_names_length*0.8)]:
     X.append(np.loadtxt(hae_folder_path+"/"+item))
     y.append(1)
+
+print "entering non hae patients"
+
 for item in non_hae_file_names[0:int(non_hae_file_names_length*0.8)]:
     X.append(np.loadtxt(non_hae_folder_path+"/"+item))
     y.append(0)
 
+print "start training"
+
 neigh = KNeighborsClassifier(n_neighbors=3)
 neigh.fit(X, y)
 
+print "preparing testing data"
 test_X = []
 
 for item in hae_file_names[int(hae_file_names_length*0.8):hae_file_names_length]:
@@ -31,5 +43,9 @@ for item in hae_file_names[int(hae_file_names_length*0.8):hae_file_names_length]
 for item in non_hae_file_names[int(non_hae_file_names_length*0.8):non_hae_file_names_length]:
     test_X.append(np.loadtxt(non_hae_folder_path+"/"+item))
 
+print "predicting"
+
 test_y = neigh.predict(test_X)
+
+print "saving results"
 np.savetxt("3", test_y)
