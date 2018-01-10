@@ -11,7 +11,7 @@ non_hae_folder_path = "./data/person/nonhae"
 hae_file_names = os.listdir(hae_folder_path)
 hae_file_names_length = len(hae_file_names)
 
-non_hae_file_names = os.listdir(non_hae_folder_path)[0:1233*20]
+non_hae_file_names = os.listdir(non_hae_folder_path)[0:1233*50]
 non_hae_file_names_length = len(non_hae_file_names)
 
 print "start generating matrix"
@@ -37,7 +37,7 @@ for item in non_hae_file_names[0:int(non_hae_file_names_length*0.8)]:
 print "start training"
 print str(datetime.now())
 
-neigh = KNeighborsClassifier(n_neighbors=1)
+neigh = KNeighborsClassifier(n_neighbors=3)
 neigh.fit(X, y)
 
 print "preparing testing data"
@@ -58,4 +58,4 @@ test_y = neigh.predict(test_X)
 print "saving results"
 print str(datetime.now())
 
-np.savetxt("1", test_y)
+np.savetxt("503", test_y)
