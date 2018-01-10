@@ -31,4 +31,5 @@ for item in hae_file_names[int(hae_file_names_length*0.8):hae_file_names_length]
 for item in non_hae_file_names[int(non_hae_file_names_length*0.8):non_hae_file_names_length]:
     test_X.append(np.loadtxt(non_hae_folder_path+"/"+item))
 
-print neigh.predict(test_X)
+test_y = neigh.predict(test_X)
+np.savetxt("3", test_y)
