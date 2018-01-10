@@ -137,37 +137,32 @@ def get_patient_array(patient, patient_data, tag, n):
         # print len(tmp)
         # print person
         # print tmp
-        # patient_data[person] = tmp
-        tmp = np.array(tmp)
-        if tag == 1:
-            np.savetxt("data/person/hae/" + person, tmp)
-        elif tag == 0:
-            np.savetxt("data/person/nonhae/" + person, tmp)
+        patient_data[person] = tmp
 
 
-get_patient_array(hae_patient, hae_patient_data, 1)
-get_patient_array(non_hae_patient, non_hae_patient_data, 0)
+get_patient_array(hae_patient, hae_patient_data, 1, 100)
+get_patient_array(non_hae_patient, non_hae_patient_data, 0, 20000)
 
-# X = []
-#
-# for item in hae_patient_data.keys()[0:986]:
-#     X.append(hae_patient_data[item])
-# for item in non_hae_patient_data.keys()[0:986*200]:
-#     X.append(non_hae_patient_data[item])
-#
-# y = np.concatenate(
-#     (np.zeros(int(len(hae_patient_data.keys()) * 0.8)) + 1, np.zeros(int(len(non_hae_patient_data.keys()) * 0.8))),
-#     axis=0)
-#
-# neigh = KNeighborsClassifier(n_neighbors=3)
-# neigh.fit(X, y)
-#
-# test_X = []
-# for item in hae_patient_data.keys()[986:1233]:
-#     test_X.append(hae_patient_data[item])
-# for item in non_hae_patient_data.keys()[986*200:1233*200]:
-#     test_X.append(non_hae_patient_data[item])
-#
-# test_y = neigh.predict(test_X)
-#
-# print test_y
+X = []
+
+for item in hae_patient_data.keys()[0:80]:
+    X.append(hae_patient_data[item])
+for item in non_hae_patient_data.keys()[0:80*200]:
+    X.append(non_hae_patient_data[item])
+
+y = np.concatenate(
+    (np.zeros(80) + 1, np.zeros(80*200)),
+    axis=0)
+
+neigh = KNeighborsClassifier(n_neighbors=3)
+neigh.fit(X, y)
+
+test_X = []
+for item in hae_patient_data.keys()[80:100]:
+    test_X.append(hae_patient_data[item])
+for item in non_hae_patient_data.keys()[80*200:100*200]:
+    test_X.append(non_hae_patient_data[item])
+
+test_y = neigh.predict(test_X)
+
+print test_y
