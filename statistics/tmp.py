@@ -140,31 +140,31 @@ def get_patient_array(patient, patient_data, tag, n):
         patient_data[person] = tmp
 
 
-get_patient_array(hae_patient, hae_patient_data, 1, 100)
-get_patient_array(non_hae_patient, non_hae_patient_data, 0, 20000)
+get_patient_array(hae_patient, hae_patient_data, 1, 1233)
+get_patient_array(non_hae_patient, non_hae_patient_data, 0, 1233*200)
 
 X = []
 
-for item in hae_patient_data.keys()[0:80]:
+for item in hae_patient_data.keys()[0:986]:
     X.append(hae_patient_data[item])
-for item in non_hae_patient_data.keys()[0:80*200]:
+for item in non_hae_patient_data.keys()[0:986*200]:
     X.append(non_hae_patient_data[item])
 
 y = np.concatenate(
-    (np.zeros(80) + 1, np.zeros(80*200)),
+    (np.zeros(986) + 1, np.zeros(986*200)),
     axis=0)
 
 neigh = KNeighborsClassifier(n_neighbors=3)
 neigh.fit(X, y)
 
 test_X = []
-for item in hae_patient_data.keys()[80:100]:
+for item in hae_patient_data.keys()[986:1233]:
     test_X.append(hae_patient_data[item])
-for item in non_hae_patient_data.keys()[80*200:100*200]:
+for item in non_hae_patient_data.keys()[986*200:1233*200]:
     test_X.append(non_hae_patient_data[item])
 
 test_y = neigh.predict(test_X)
 
 print test_y
 print np.sum(test_y)
-np.savetxt("huh", test_y)
+np.savetxt("3", test_y)
