@@ -3,6 +3,7 @@ from tqdm import tqdm
 from datetime import datetime
 
 all_hae_records = []
+
 hae_file_address = "data/hae_all_1.csv"
 all_non_hae_records = []
 non_hae_file_address = "data/nonhae.csv"
