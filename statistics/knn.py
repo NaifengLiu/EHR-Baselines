@@ -37,7 +37,7 @@ for item in non_hae_file_names[0:int(non_hae_file_names_length*0.8)]:
 print "start training"
 print str(datetime.now())
 
-neigh = KNeighborsClassifier(n_neighbors=3)
+neigh = KNeighborsClassifier(n_neighbors=1)
 neigh.fit(X, y)
 
 print "preparing testing data"
@@ -58,4 +58,4 @@ test_y = neigh.predict(test_X)
 print "saving results"
 print str(datetime.now())
 
-np.savetxt("3", test_y)
+np.savetxt("1", test_y)
