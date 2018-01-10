@@ -166,3 +166,5 @@ for item in non_hae_patient_data.keys()[80*200:100*200]:
 test_y = neigh.predict(test_X)
 
 print test_y
+print np.sum(test_y)
+np.savetxt("huh", test_y)
