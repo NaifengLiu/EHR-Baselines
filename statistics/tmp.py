@@ -154,17 +154,24 @@ y = np.concatenate(
     (np.zeros(986) + 1, np.zeros(986*200)),
     axis=0)
 
-neigh = KNeighborsClassifier(n_neighbors=3)
-neigh.fit(X, y)
 
-test_X = []
-for item in hae_patient_data.keys()[986:1233]:
-    test_X.append(hae_patient_data[item])
-for item in non_hae_patient_data.keys()[986*200:1233*200]:
-    test_X.append(non_hae_patient_data[item])
+def knn(num):
+    neigh = KNeighborsClassifier(n_neighbors=num)
+    neigh.fit(X, y)
+    test_X = []
+    for this_item in hae_patient_data.keys()[986:1233]:
+        test_X.append(hae_patient_data[this_item])
+    for this_item in non_hae_patient_data.keys()[986*200:1233*200]:
+        test_X.append(non_hae_patient_data[this_item])
+    test_y = neigh.predict(test_X)
 
-test_y = neigh.predict(test_X)
+    print test_y
+    print np.sum(test_y)
+    np.savetxt(str(num), test_y)
 
-print test_y
-print np.sum(test_y)
-np.savetxt("3", test_y)
+
+knn(1)
+knn(2)
+knn(3)
+knn(4)
+knn(5)
