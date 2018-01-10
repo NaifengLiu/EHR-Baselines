@@ -2,32 +2,24 @@ import numpy as np
 import scipy
 import collections
 from tqdm import tqdm
+from sklearn.neighbors import KNeighborsClassifier
 
 hae_patient = dict()
 non_hae_patient = dict()
+hae_patient_data = dict()
+non_hae_patient_data = dict()
+
 events = []
+with open("hae_result") as ff:
+    for line in ff:
+        events.append(line.replace("[", "").replace("\'", "").split(",")[0])
+    ff.close()
+with open("nonhae_result") as ff:
+    for line in ff:
+        events.append(line.replace("[", "").replace("\'", "").split(",")[0])
+    ff.close()
 
-
-def check_total_events():
-    with open("data/hae_all_1.csv") as f:
-        for line in f:
-            line_split = line.rstrip().split(",")
-            if line_split[1] not in events:
-                events.append(line_split[1])
-        f.close()
-    with open("data/nonhae.csv") as f:
-        lines = f.readlines()
-        for i in tqdm(range(len(lines))):
-            line = lines[i]
-            line_split = line.rstrip().split(",")
-            if line_split[1] not in events:
-                events.append(line_split[1])
-        f.close()
-    print len(events)
-
-
-# check_total_events()
-# totally 58030 events
+events = list(set(events))
 
 
 def fill_with_data(patient, file_address):
@@ -53,6 +45,8 @@ def get_top_m_events_from_n_patients(patient, m, n):
         # print person
         counter = collections.Counter(patient[person])
         print counter
+        print counter.keys()
+        print counter.values()
         tmp = []
         for i in range(len(counter.values())):
             tmp.append([i, np.var(
@@ -78,7 +72,7 @@ def get_top_m_events(patient, m):
                 event_dict[counter.keys()[j]] = []
             event_dict[counter.keys()[j]].append(counter.values()[j])
     for event in event_dict.keys():
-        tmp = np.pad(event_dict[event], (0, len(patient.keys())-len(event_dict[event])), 'constant')
+        tmp = np.pad(event_dict[event], (0, len(patient.keys()) - len(event_dict[event])), 'constant')
         result.append([event, np.var(tmp)])
     result.sort(key=lambda x: x[1], reverse=True)
     for item in result[0:m]:
@@ -87,7 +81,7 @@ def get_top_m_events(patient, m):
 
 # get_top_m_events(hae_patient, 2901)
 
-get_top_m_events(non_hae_patient, 2901)
+# get_top_m_events(non_hae_patient, 2901)
 
 
 # hae_result = get_top_m_events_from_n_patients(hae_patient, 10, 100)
@@ -126,3 +120,54 @@ def generate_matrix(patient_type, original_file_path, previous_result):
 
 # generate_matrix("non_hae", "data/nonhae_all_1.csv", non_hae_result)
 # generate_matrix("hae", "data/hae_all_1.csv", hae_result)
+
+def get_patient_array(patient, patient_data, tag):
+    for person in patient.keys():
+        # print person
+        counter = collections.Counter(patient[person])
+        # print counter
+        # print counter.keys()
+        # print counter.values()
+        tmp = []
+        for event in events:
+            if event in counter.keys():
+                tmp.append(counter.values()[counter.keys().index(event)])
+            else:
+                tmp.append(0)
+        # print len(tmp)
+        # print person
+        # print tmp
+        # patient_data[person] = tmp
+        tmp = np.array(tmp)
+        if tag == 1:
+            np.savetxt("data/person/hae/" + person, tmp)
+        elif tag == 0:
+            np.savetxt("data/person/nonhae/" + person, tmp)
+
+
+get_patient_array(hae_patient, hae_patient_data, 1)
+get_patient_array(non_hae_patient, non_hae_patient_data, 0)
+
+# X = []
+#
+# for item in hae_patient_data.keys()[0:986]:
+#     X.append(hae_patient_data[item])
+# for item in non_hae_patient_data.keys()[0:986*200]:
+#     X.append(non_hae_patient_data[item])
+#
+# y = np.concatenate(
+#     (np.zeros(int(len(hae_patient_data.keys()) * 0.8)) + 1, np.zeros(int(len(non_hae_patient_data.keys()) * 0.8))),
+#     axis=0)
+#
+# neigh = KNeighborsClassifier(n_neighbors=3)
+# neigh.fit(X, y)
+#
+# test_X = []
+# for item in hae_patient_data.keys()[986:1233]:
+#     test_X.append(hae_patient_data[item])
+# for item in non_hae_patient_data.keys()[986*200:1233*200]:
+#     test_X.append(non_hae_patient_data[item])
+#
+# test_y = neigh.predict(test_X)
+#
+# print test_y
