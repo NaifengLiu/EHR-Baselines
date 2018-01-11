@@ -63,12 +63,6 @@ def run(a, b):
     np.savetxt(str(a) + str(b), test_y)
 
 
-run(20, 2)
-run(20, 4)
-run(20, 5)
-run(50, 2)
-run(50, 4)
-run(50, 5)
 run(100, 1)
 run(100, 2)
 run(100, 3)
