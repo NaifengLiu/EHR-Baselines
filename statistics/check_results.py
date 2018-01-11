@@ -18,8 +18,15 @@ def check_file(address):
     true_num = len(hae_file_names[int(hae_file_names_length * 0.8):hae_file_names_length])
     false_num = len(non_hae_file_names[int(non_hae_file_names_length * 0.8):non_hae_file_names_length])
 
-    print true_num+false_num
-    print np.loadtxt(address).shape
+    result = np.loadtxt(address)
+
+    recall = 0
+    for i in range(true_num):
+        if result[i] == 1:
+            recall += 1
+    print float(recall) / float(true_num)
+
+    print float(recall) / float(np.sum(result))
 
 
 
