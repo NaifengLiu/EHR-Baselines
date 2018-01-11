@@ -24,11 +24,19 @@ def check_file(address):
     for i in range(true_num):
         if result[i] == 1:
             recall += 1
-    print float(recall) / float(true_num)
 
-    print float(recall) / float(np.sum(result))
+    print "times = " + str(times) + ", knn parameter = " + str(nn)
+    print "precision: " + str(float(recall) / float(np.sum(result)))
+    print "recall: " + str(float(recall) / float(true_num))
 
 
-
-check_file("503")
+check_file("201")
+check_file("202")
 check_file("203")
+check_file("204")
+check_file("205")
+check_file("501")
+check_file("502")
+check_file("503")
+check_file("504")
+check_file("505")
