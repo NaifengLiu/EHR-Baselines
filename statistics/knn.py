@@ -39,7 +39,7 @@ def run(a, b):
     print "start training"
     print str(datetime.now())
 
-    neigh = KNeighborsClassifier(n_neighbors=b)
+    neigh = KNeighborsClassifier(n_neighbors=b, algorithm='ball_tree')
     neigh.fit(X, y)
 
     print "preparing testing data"
