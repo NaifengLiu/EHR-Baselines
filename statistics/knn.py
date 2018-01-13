@@ -60,11 +60,11 @@ def run(a, b):
     print "saving results"
     print str(datetime.now())
 
-    np.savetxt(str(a) + str(b), test_y)
+    np.savetxt(str(a) + str(b)+"balltree", test_y)
 
 
-run(100, 1)
-run(100, 2)
-run(100, 3)
-run(100, 4)
-run(100, 5)
+run(50, 1)
+run(50, 2)
+run(50, 3)
+run(50, 4)
+run(50, 5)
