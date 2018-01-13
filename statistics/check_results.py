@@ -3,7 +3,7 @@ import os
 
 
 def check_file(address):
-    times = int(float(address[0:2]))
+    times = int(float(address[0:-1]))
     nn = int(float(address[-1]))
 
     hae_folder_path = "./data/person/hae"
@@ -30,13 +30,18 @@ def check_file(address):
     print "recall: " + str(float(recall) / float(true_num))
 
 
-check_file("201")
-check_file("202")
-check_file("203")
-check_file("204")
-check_file("205")
-check_file("501")
-check_file("502")
-check_file("503")
-check_file("504")
-check_file("505")
+# check_file("201")
+# check_file("202")
+# check_file("203")
+# check_file("204")
+# check_file("205")
+# check_file("501")
+# check_file("502")
+# check_file("503")
+# check_file("504")
+# check_file("505")
+check_file("1001")
+check_file("1002")
+check_file("1003")
+check_file("1004")
+check_file("1005")
