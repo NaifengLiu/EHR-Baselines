@@ -60,17 +60,17 @@ def run(a, b, metric):
     print "saving results"
     print str(datetime.now())
 
-    np.savetxt(str(a) + str(b) + "euclidean", test_y)
+    np.savetxt(str(a) + str(b) + metric, test_y)
 
 
-# run(50, 1, 'euclidean')
-# run(50, 2, 'euclidean')
-# run(50, 3, 'euclidean')
-# run(50, 4, 'euclidean')
-# run(50, 5, 'euclidean')
+run(50, 1, 'euclidean')
+run(50, 2, 'euclidean')
+run(50, 3, 'euclidean')
+run(50, 4, 'euclidean')
+run(50, 5, 'euclidean')
 
-run(50, 1, 'l1')
-run(50, 2, 'l1')
-run(50, 3, 'l1')
-run(50, 4, 'l1')
-run(50, 5, 'l1')
+# run(50, 1, 'l1')
+# run(50, 2, 'l1')
+# run(50, 3, 'l1')
+# run(50, 4, 'l1')
+# run(50, 5, 'l1')
