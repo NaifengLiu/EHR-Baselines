@@ -60,7 +60,7 @@ def run(a, b, metric):
     print "saving results"
     print str(datetime.now())
 
-    np.savetxt(str(a) + str(b) + "l1", test_y)
+    np.savetxt(str(a) + str(b) + "euclidean", test_y)
 
 
 # run(50, 1, 'euclidean')
