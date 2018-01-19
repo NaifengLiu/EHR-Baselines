@@ -39,7 +39,7 @@ def run(a, b):
     print "start training"
     print str(datetime.now())
 
-    neigh = KNeighborsClassifier(n_neighbors=b, algorithm='auto')
+    neigh = KNeighborsClassifier(n_neighbors=b, algorithm='auto', metric='l1')
     neigh.fit(X, y)
 
     print "preparing testing data"
@@ -60,7 +60,7 @@ def run(a, b):
     print "saving results"
     print str(datetime.now())
 
-    np.savetxt(str(a) + str(b), test_y)
+    np.savetxt(str(a) + str(b) + "l1", test_y)
 
 
 run(50, 1)
