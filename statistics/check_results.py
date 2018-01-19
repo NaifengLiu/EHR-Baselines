@@ -28,6 +28,7 @@ def check_file(address, method):
         if result[i] == 1:
             recall += 1
 
+    print "method: " + method
     print "times = " + str(times) + ", knn parameter = " + str(nn)
     print "precision: " + str(float(recall) / float(np.sum(result)))
     print "recall: " + str(float(recall) / float(true_num))
