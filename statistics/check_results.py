@@ -2,9 +2,12 @@ import numpy as np
 import os
 
 
-def check_file(address):
-    times = int(float(address[0:-1]))
-    nn = int(float(address[-1]))
+def check_file(address, method):
+    times = int(float(address[0:2]))
+    nn = int(float(address[2]))
+
+    print times
+    print nn
 
     hae_folder_path = "./data/person/hae"
     non_hae_folder_path = "./data/person/nonhae"
@@ -18,7 +21,7 @@ def check_file(address):
     true_num = len(hae_file_names[int(hae_file_names_length * 0.8):hae_file_names_length])
     false_num = len(non_hae_file_names[int(non_hae_file_names_length * 0.8):non_hae_file_names_length])
 
-    result = np.loadtxt(address)
+    result = np.loadtxt(address+method)
 
     recall = 0
     for i in range(true_num):
@@ -30,18 +33,14 @@ def check_file(address):
     print "recall: " + str(float(recall) / float(true_num))
 
 
-# check_file("201")
-# check_file("202")
-# check_file("203")
-# check_file("204")
-# check_file("205")
-# check_file("501")
-# check_file("502")
-# check_file("503")
-# check_file("504")
-# check_file("505")
-check_file("1001")
-check_file("1002")
-check_file("1003")
-check_file("1004")
-check_file("1005")
+check_file("501", "l1")
+check_file("502", "l1")
+check_file("503", "l1")
+check_file("504", "l1")
+check_file("505", "l1")
+
+check_file("501", "euclidean")
+check_file("502", "euclidean")
+check_file("503", "euclidean")
+check_file("504", "euclidean")
+check_file("505", "euclidean")
