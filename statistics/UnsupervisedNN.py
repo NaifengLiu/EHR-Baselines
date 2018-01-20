@@ -44,11 +44,11 @@ def run(a, b, metric):
     np.savetxt(str(a) + str(b) + metric + "_U", indices)
 
 
-run(50, 1, 'euclidean')
-run(50, 2, 'euclidean')
+# run(50, 1, 'euclidean')
+# run(50, 2, 'euclidean')
 run(50, 3, 'euclidean')
-run(50, 4, 'euclidean')
-run(50, 5, 'euclidean')
+# run(50, 4, 'euclidean')
+# run(50, 5, 'euclidean')
 
 # run(50, 1, 'l1')
 # run(50, 2, 'l1')
