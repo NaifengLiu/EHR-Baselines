@@ -51,7 +51,7 @@ def check_unsupervised_file(address, method):
     tmp = np.loadtxt(address + method + "_U")
     num = int(float(address[2]))
     count = 0
-    print tmp[0, 0]
+    print tmp[0]
     for i in range(1233):
         for j in range(num):
             item = tmp[i][j]
