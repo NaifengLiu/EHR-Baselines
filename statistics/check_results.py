@@ -52,12 +52,20 @@ def check_unsupervised_file(address, method):
     num = int(float(address[2]))
     count = 0
     for i in range(1233):
-        for j in range(num-1):
+        for j in range(num):
             item = tmp[i][j]
             if item < 1233:
                 count += 1
-    print count
+    print address + method
+    print float(count-1233)/float(1233)
 
 
 # check_unsupervised_file("501", "l1")
 check_unsupervised_file("502", "l1")
+check_unsupervised_file("503", "l1")
+check_unsupervised_file("504", "l1")
+check_unsupervised_file("505", "l1")
+check_unsupervised_file("502", "euclidean")
+check_unsupervised_file("503", "euclidean")
+check_unsupervised_file("504", "euclidean")
+check_unsupervised_file("505", "euclidean")
