@@ -57,7 +57,7 @@ def check_unsupervised_file(address, method):
             if item < 1233:
                 count += 1
     print address + method
-    print float(count-1233)/float(1233)
+    print float(count-1233)/(float(1233)*float(num-1))
 
 
 # check_unsupervised_file("501", "l1")
