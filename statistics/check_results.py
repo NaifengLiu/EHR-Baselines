@@ -51,9 +51,8 @@ def check_unsupervised_file(address, method):
     tmp = np.loadtxt(address + method + "_U")
     num = int(float(address[2]))
     count = 0
-    print tmp[0]
     for i in range(1233):
-        for j in range(num):
+        for j in range(num-1):
             item = tmp[i][j]
             if item < 1233:
                 count += 1
