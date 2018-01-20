@@ -20,12 +20,14 @@ def run(a, b, metric):
     print str(datetime.now())
 
     X = []
+    new_X = []
 
     print "entering hae patients"
     print str(datetime.now())
 
     for item in hae_file_names[0:int(hae_file_names_length)]:
         X.append(np.loadtxt(hae_folder_path + "/" + item))
+        new_X.append(np.loadtxt(hae_folder_path + "/" + item))
 
     print "entering non hae patients"
     print str(datetime.now())
@@ -40,7 +42,7 @@ def run(a, b, metric):
 
     print "calculating result"
     print str(datetime.now())
-    distances, indices = nbrs.kneighbors(X)
+    distances, indices = nbrs.kneighbors(new_X)
     # np.savetxt(str(a) + str(b) + metric + "_U", indices)
 
     print "finishing"
