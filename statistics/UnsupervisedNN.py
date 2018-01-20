@@ -43,6 +43,7 @@ def run(a, b, metric):
     distances, indices = nbrs.kneighbors(X)
     # np.savetxt(str(a) + str(b) + metric + "_U", indices)
 
+    print "finishing"
     tmp = indices
     num = b
     count = 0
