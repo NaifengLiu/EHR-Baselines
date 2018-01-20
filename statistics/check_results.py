@@ -60,5 +60,5 @@ def check_unsupervised_file(address, method):
     print count
 
 
-check_unsupervised_file("501", "l1")
+# check_unsupervised_file("501", "l1")
 check_unsupervised_file("502", "l1")
