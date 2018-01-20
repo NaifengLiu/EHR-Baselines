@@ -34,17 +34,17 @@ def check_supervised_file(address, method):
     print "recall: " + str(float(recall) / float(true_num))
 
 
-check_supervised_file("501", "l1")
-check_supervised_file("502", "l1")
-check_supervised_file("503", "l1")
-check_supervised_file("504", "l1")
-check_supervised_file("505", "l1")
-
-check_supervised_file("501", "euclidean")
-check_supervised_file("502", "euclidean")
-check_supervised_file("503", "euclidean")
-check_supervised_file("504", "euclidean")
-check_supervised_file("505", "euclidean")
+# check_supervised_file("501", "l1")
+# check_supervised_file("502", "l1")
+# check_supervised_file("503", "l1")
+# check_supervised_file("504", "l1")
+# check_supervised_file("505", "l1")
+#
+# check_supervised_file("501", "euclidean")
+# check_supervised_file("502", "euclidean")
+# check_supervised_file("503", "euclidean")
+# check_supervised_file("504", "euclidean")
+# check_supervised_file("505", "euclidean")
 
 
 def check_unsupervised_file(address, method):
@@ -52,7 +52,8 @@ def check_unsupervised_file(address, method):
     num = int(float(address[2]))
     count = 0
     for i in range(1233):
-        for item in tmp[i]:
+        for j in range(num):
+            item = tmp[i][j]
             if item < 1233:
                 count += 1
     print count
