@@ -33,15 +33,26 @@ def run(a, b, metric):
     for item in non_hae_file_names[0:int(non_hae_file_names_length)]:
         X.append(np.loadtxt(non_hae_folder_path + "/" + item))
 
-    print "start training"
+    print "start fitting"
     print str(datetime.now())
 
     nbrs = NearestNeighbors(n_neighbors=b, algorithm='auto', metric=metric).fit(X)
 
-    print "saving result"
+    print "calculating result"
     print str(datetime.now())
     distances, indices = nbrs.kneighbors(X)
-    np.savetxt(str(a) + str(b) + metric + "_U", indices)
+    # np.savetxt(str(a) + str(b) + metric + "_U", indices)
+
+    tmp = indices
+    num = b
+    count = 0
+    for i in range(1233):
+        for j in range(num):
+            item = tmp[i][j]
+            if item < 1233:
+                count += 1
+    print str(a) + str(b) + metric
+    print float(count - 1233) / (float(1233) * float(num - 1))
 
 
 # run(50, 1, 'euclidean')
@@ -55,3 +66,4 @@ def run(a, b, metric):
 # run(50, 3, 'l1')
 # run(50, 4, 'l1')
 run(50, 5, 'l1')
+run(50, 6, 'l1')
