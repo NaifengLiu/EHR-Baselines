@@ -61,11 +61,42 @@ def check_unsupervised_file(address, method):
 
 
 # check_unsupervised_file("501", "l1")
-check_unsupervised_file("502", "l1")
-check_unsupervised_file("503", "l1")
-check_unsupervised_file("504", "l1")
-check_unsupervised_file("505", "l1")
-check_unsupervised_file("502", "euclidean")
-check_unsupervised_file("503", "euclidean")
-check_unsupervised_file("504", "euclidean")
-check_unsupervised_file("505", "euclidean")
+# check_unsupervised_file("502", "l1")
+# check_unsupervised_file("503", "l1")
+# check_unsupervised_file("504", "l1")
+# check_unsupervised_file("505", "l1")
+# check_unsupervised_file("502", "euclidean")
+# check_unsupervised_file("503", "euclidean")
+# check_unsupervised_file("504", "euclidean")
+# check_unsupervised_file("505", "euclidean")
+
+
+def check_unsupervised_precision_recall(address, method):
+    tmp = np.loadtxt(address + method + "_U")
+    num = int(float(address[2]))
+    count = 0
+    true_positive = 0
+    false_positive = 0
+    true_negative = 0
+    false_negative = 0
+    for i in range(len(tmp)):
+        this = 0
+        for j in range(1, num):
+            item = tmp[i][j]
+            if item < 1233:
+                this += 1
+        if this >= num/2+1:
+            if i < 1233:
+                true_positive += 1
+            elif i >= 1233:
+                false_positive += 1
+        else:
+            if i < 1233:
+                false_negative += 1
+            else:
+                true_negative += 1
+    print "p: " + str(float(true_positive) / (float(true_positive) + float(false_positive)))
+    print "r: " + str(float(true_positive) / (float(true_positive) + float(false_negative)))
+
+
+check_unsupervised_precision_recall("502", "l1")
