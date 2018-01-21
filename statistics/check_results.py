@@ -100,8 +100,18 @@ def check_unsupervised_precision_recall(address, method):
     print true_negative
     print false_positive
     print false_negative
+    print "file: " + address + ", method: " + method
     print "p: " + str(float(true_positive) / (float(true_positive) + float(false_positive)))
     print "r: " + str(float(true_positive) / (float(true_positive) + float(false_negative)))
 
 
 check_unsupervised_precision_recall("502", "l1")
+check_unsupervised_precision_recall("503", "l1")
+check_unsupervised_precision_recall("504", "l1")
+check_unsupervised_precision_recall("505", "l1")
+check_unsupervised_precision_recall("506", "l1")
+check_unsupervised_precision_recall("502", "euclidean")
+check_unsupervised_precision_recall("503", "euclidean")
+check_unsupervised_precision_recall("504", "euclidean")
+check_unsupervised_precision_recall("505", "euclidean")
+check_unsupervised_precision_recall("506", "euclidean")
