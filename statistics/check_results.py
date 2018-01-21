@@ -83,7 +83,7 @@ def check_unsupervised_precision_recall(address, method):
         this = 0
         for j in range(1, num):
             item = tmp[i][j]
-            print item
+            # print item
             if item < 1233:
                 this += 1
         if this >= (num-1)/2+1:
