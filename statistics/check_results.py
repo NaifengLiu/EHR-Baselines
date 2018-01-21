@@ -86,7 +86,7 @@ def check_unsupervised_precision_recall(address, method):
             print item
             if item < 1233:
                 this += 1
-        if this >= num/2+1:
+        if this >= (num-1)/2+1:
             if i < 1233:
                 true_positive += 1
             elif i >= 1233:
