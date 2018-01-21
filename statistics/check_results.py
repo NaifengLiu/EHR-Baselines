@@ -95,6 +95,10 @@ def check_unsupervised_precision_recall(address, method):
                 false_negative += 1
             else:
                 true_negative += 1
+    print true_positive
+    print true_negative
+    print false_positive
+    print false_negative
     print "p: " + str(float(true_positive) / (float(true_positive) + float(false_positive)))
     print "r: " + str(float(true_positive) / (float(true_positive) + float(false_negative)))
 
