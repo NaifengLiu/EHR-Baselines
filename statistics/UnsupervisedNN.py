@@ -67,10 +67,10 @@ def run(a, b, metric):
 # run(200, 3, 'euclidean')
 # run(200, 4, 'euclidean')
 # run(200, 5, 'euclidean')
-run(200, 6, 'euclidean')
+# run(200, 6, 'euclidean')
 
 # run(200, 1, 'l1')
-# run(200, 2, 'l1')
+run(200, 2, 'l1')
 # run(200, 3, 'l1')
 # run(200, 4, 'l1')
 # run(200, 5, 'l1')
