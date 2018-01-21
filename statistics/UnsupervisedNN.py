@@ -55,7 +55,11 @@ def run(a, b, metric):
             if item < 1233:
                 count += 1
     print str(a) + str(b) + metric
+    rate = float(count - 1233) / (float(1233) * float(num - 1))
     print float(count - 1233) / (float(1233) * float(num - 1))
+    with open(str(a) + str(b) + metric + "result", "w+") as w:
+        w.write(str(rate))
+        w.close()
 
 
 # run(200, 1, 'euclidean')
