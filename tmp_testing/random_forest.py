@@ -14,4 +14,5 @@ labels = clf.predict(X_test)
 prob = clf.predict_proba(X_test)
 
 np.savetxt("labels", labels)
+np.savetxt("ytest", y_test)
 np.savetxt("prob", prob)
