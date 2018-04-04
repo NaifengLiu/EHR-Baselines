@@ -15,6 +15,6 @@ a = np.array([1, 2, 3])
 b = np.array([3, 4, 5])
 c = np.array([5, 6, 7])
 
-print np.stack((a, b, c)).T
+print np.stack((a, b, c)).T[1][1]
 
 

@@ -25,11 +25,23 @@ np.savetxt("prob", prob)
 
 max_p = np.amax(prob, axis=1)
 
-tmp = np.stack((x_test_id, labels, max_p)).T
+tmp = np.stack((x_test_id, y_test, labels, max_p)).T
 
 print tmp.shape
 
 np.savetxt("output", tmp)
+
+with open("output.csv", "w+") as w:
+    w.write("id,label,predicted_label,prob\n")
+    for i in range(len(tmp)):
+        w.write(str(tmp[i][0].astype(int)))
+        w.write(",")
+        w.write(str(tmp[i][1].astype(int)))
+        w.write(",")
+        w.write(str(tmp[i][2].astype(int)))
+        w.write(",")
+        w.write(str(tmp[i][3]))
+        w.write("\n")
 
 print clf.oob_score_
 
