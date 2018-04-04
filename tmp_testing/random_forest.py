@@ -19,25 +19,6 @@ np.savetxt("labels", labels)
 np.savetxt("ytest", y_test)
 np.savetxt("prob", prob)
 
-
-Y_test = y_test
-y_score = clf.oob_decision_function_(X_test)
-
 print clf.oob_score
 
-# For each class
-precision = dict()
-recall = dict()
-average_precision = dict()
-for i in range(3):
-    precision[i], recall[i], _ = precision_recall_curve(Y_test[:, i],
-                                                        y_score[:, i])
-    average_precision[i] = average_precision_score(Y_test[:, i], y_score[:, i])
-
-# A "micro-average": quantifying score on all classes jointly
-precision["micro"], recall["micro"], _ = precision_recall_curve(Y_test.ravel(),
-    y_score.ravel())
-average_precision["micro"] = average_precision_score(Y_test, y_score,
-                                                     average="micro")
-print('Average precision score, micro-averaged over all classes: {0:0.2f}'
-      .format(average_precision["micro"]))
+print clf.score(X_test, y_test)
