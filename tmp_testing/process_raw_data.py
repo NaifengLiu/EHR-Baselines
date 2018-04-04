@@ -21,6 +21,7 @@ tmp = []
 
 tmptmp = []
 
+result_tmp = []
 
 with open("diag_grp_1M.csv") as f:
     f.readline()
@@ -37,18 +38,27 @@ with open("diag_grp_1M.csv") as f:
         tmp_2 = [group_2.index(line_split[2]), group_1.index(line_split[4]), group_3.index(line_split[8])]
         tmptmp.append(tmp_2)
 
-print tmp
+        result_tmp.append(result_group.index(line_split[9]))
 
-enc = preprocessing.OneHotEncoder()
-enc.fit(tmptmp)
+result_tmp = np.array(result_tmp)
 
-pmt = enc.transform(tmptmp).toarray()
-print pmt
+# np.savetxt("y", result_tmp)
 
-result = []
+print result_tmp[558888]
+print result_tmp[999999]
 
-for i in range(len(tmp)):
-    result.append(tmp[i] + pmt[i].astype(int).tolist())
-
-result = np.array(result).astype(int)
-np.savetxt("result", result)
+# print tmp
+#
+# enc = preprocessing.OneHotEncoder()
+# enc.fit(tmptmp)
+#
+# pmt = enc.transform(tmptmp).toarray()
+# print pmt
+#
+# result = []
+#
+# for i in range(len(tmp)):
+#     result.append(tmp[i] + pmt[i].astype(int).tolist())
+#
+# result = np.array(result).astype(int)
+# np.savetxt("result", result)

@@ -1,14 +1,9 @@
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
 import numpy as np
 
-patient = dict()
-group = []
+X = np.loadtxt()
+y = np.loadtxt()
 
-with open("diag_grp_1M.csv") as f:
-    f.readline()
-    for line in f.readlines():
-        line_split = line.split(",")
-        # print line_split[7]
-        if line_split[4] not in group:
-            group.append(line_split[4])
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-print group
