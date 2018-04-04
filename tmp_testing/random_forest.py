@@ -19,6 +19,6 @@ np.savetxt("labels", labels)
 np.savetxt("ytest", y_test)
 np.savetxt("prob", prob)
 
-print clf.oob_score
+print clf.oob_score_
 
 print clf.score(X_test, y_test)
