@@ -20,44 +20,35 @@ tmp = []
 
 tmp_tmp = []
 
-with open("./data/training/X.csv", "w+") as w:
-    with open("./data/training/training.csv") as f:
-        lines = f.readlines()
+with open("./data/training/training.csv") as f:
+    lines = f.readlines()
 
-        q = 0
+    for line in lines:
+        split = line.rstrip().split(",")
+        line_tmp = []
+        for i in [1, 3, 5, 6, 7, 8]:
+            if split[i] != "":
+                line_tmp.append(split[i])
+            else:
+                line_tmp.append("10101010")
+        if len(line_tmp) == 6:
+            line_tmp = map(float, line_tmp)
+            tmp.append(line_tmp)
 
-        for line in lines:
-            split = line.rstrip().split(",")
-            line_tmp = []
-            for i in [1, 3, 5, 6, 7, 8]:
-                if split[i] != "":
-                    line_tmp.append(split[i])
-                else:
-                    line_tmp.append("10101010")
-            if len(line_tmp) == 6:
-                line_tmp = map(float, line_tmp)
-                tmp.append(line_tmp)
+        tmp_tmp.append([group_2.index(split[2]), group_4.index(split[4]), 0, group_10.index(split[10])])
 
-            tmp_tmp.append([group_2.index(split[2]), group_4.index(split[4]), 0, group_10.index(split[10])])
+    enc = preprocessing.OneHotEncoder()
+    enc.fit(tmp_tmp)
 
-            q += 1
+    pmt = enc.transform(tmp_tmp).toarray()
+    print pmt
 
-            if q >= 10:
-                break
+    result = []
 
-        enc = preprocessing.OneHotEncoder()
-        enc.fit(tmp_tmp)
+    for i in range(len(tmp)):
+        result.append(tmp[i] + pmt[i].astype(int).tolist())
 
-        pmt = enc.transform(tmp_tmp).toarray()
-        print pmt
+    print result
 
-        result = []
-
-        for i in range(len(tmp)):
-            result.append(tmp[i] + pmt[i].astype(int).tolist())
-
-        print result
-#
-#         # result = np.array(result).astype(int)
-#         # np.savetxt("result", result)
+    np.savetxt("X", result)
 
