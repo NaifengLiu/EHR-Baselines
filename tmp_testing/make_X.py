@@ -25,7 +25,7 @@ tmp_tmp_1 = []
 tmp_tmp_2 = []
 tmp_tmp_3 = []
 
-with open("./data/training/training.csv") as f1:
+with open("./data/testing/testing.csv") as f1:
     lines = f1.readlines()
     for line in lines:
         split = line.rstrip().split(",")
