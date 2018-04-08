@@ -15,18 +15,27 @@
 #                         'npa_grp_cd', 'diag_grp_nm']:
 #             print i
 
+import csv
+
 q = 0
 
 with open("./data/training/training.csv", "w+") as w:
     for i in range(1, 8):
-        with open("./data/training/"+str(i)+".csv") as f:
-            f.readline()
-            for line in f.readlines():
-                split = line.strip().split(",")
-                if len(split) != q:
-                    print len(split)
-                    q = len(split)
-                    print line
+        with open("./data/training/"+str(i)+".csv", "rb") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                print row
+                break
+
+
+
+
+            # for line in f.readlines():
+            #     split = line.strip().split(",")
+            #     if len(split) != q:
+            #         print len(split)
+            #         q = len(split)
+            #         print line
                 # w.write(split[5])
                 # w.write(',')
                 # w.write(split[2])
