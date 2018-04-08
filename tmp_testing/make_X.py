@@ -27,12 +27,10 @@ with open("./data/training/training.csv") as f:
         split = line.rstrip().split(",")
         line_tmp = []
         for i in [1, 3, 5, 6, 7, 8]:
-            if split[i] != "":
+            if split[i] != "" and split[i] != "2016-07-14T20:00:00.000-04:00":
                 line_tmp.append(split[i])
             else:
                 line_tmp.append("10101010")
-            if split[i] == "2016-07-14T20:00:00.000-04:00":
-                print line
         if len(line_tmp) == 6:
             line_tmp = map(float, line_tmp)
             # print line
