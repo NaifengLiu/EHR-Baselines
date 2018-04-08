@@ -15,6 +15,7 @@
 #                         'npa_grp_cd', 'diag_grp_nm']:
 #             print i
 
+q = 0
 
 with open("./data/unknowndata/unknowndata.csv", "w+") as w:
     for i in range(1, 4):
@@ -22,26 +23,30 @@ with open("./data/unknowndata/unknowndata.csv", "w+") as w:
             f.readline()
             for line in f.readlines():
                 split = line.strip().split(",")
-                w.write(split[5])
-                w.write(',')
-                w.write(split[2])
-                w.write(',')
-                w.write(split[7])
-                w.write(',')
-                w.write(split[16])
-                w.write(',')
-                w.write(split[19])
-                w.write(',')
-                w.write(split[36])
-                w.write(',')
-                w.write(split[40])
-                w.write(',')
-                w.write(split[69])
-                w.write(',')
-                w.write(split[72])
-                w.write(',')
-                w.write(split[73])
-                w.write(',')
-                w.write(split[77])
-                w.write('\n')
+                if len(split) != q:
+                    print len(split)
+                    q = len(split)
+                    print line
+                # w.write(split[5])
+                # w.write(',')
+                # w.write(split[2])
+                # w.write(',')
+                # w.write(split[7])
+                # w.write(',')
+                # w.write(split[16])
+                # w.write(',')
+                # w.write(split[19])
+                # w.write(',')
+                # w.write(split[36])
+                # w.write(',')
+                # w.write(split[40])
+                # w.write(',')
+                # w.write(split[69])
+                # w.write(',')
+                # w.write(split[72])
+                # w.write(',')
+                # w.write(split[73])
+                # w.write(',')
+                # w.write(split[77])
+                # w.write('\n')
 
