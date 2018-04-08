@@ -17,9 +17,9 @@
 
 q = 0
 
-with open("./data/unknowndata/unknowndata.csv", "w+") as w:
-    for i in range(1, 4):
-        with open("./data/unknowndata/"+str(i)+".csv") as f:
+with open("./data/training/training.csv", "w+") as w:
+    for i in range(1, 8):
+        with open("./data/training/"+str(i)+".csv") as f:
             f.readline()
             for line in f.readlines():
                 split = line.strip().split(",")
