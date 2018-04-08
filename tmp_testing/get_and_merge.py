@@ -16,9 +16,9 @@
 #             print i
 
 
-with open("./data/testing/testing.csv", "w+") as w:
+with open("./data/unknowndata/unknowndata.csv", "w+") as w:
     for i in range(1, 4):
-        with open("./data/testing/"+str(i)+".csv") as f:
+        with open("./data/unknowndata/"+str(i)+".csv") as f:
             f.readline()
             for line in f.readlines():
                 split = line.strip().split(",")
@@ -43,7 +43,5 @@ with open("./data/testing/testing.csv", "w+") as w:
                 w.write(split[73])
                 w.write(',')
                 w.write(split[77])
-                w.write(',')
-                w.write(split[79])
                 w.write('\n')
 
