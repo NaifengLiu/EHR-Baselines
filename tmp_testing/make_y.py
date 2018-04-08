@@ -7,7 +7,7 @@ with open("./data/training/training.csv") as f:
     lines = f.readlines()
     for line in lines:
         split = line.split(",")
-        y.append(split[-1])
+        y.append(result_group.index(split[-1]))
 
 y = np.array(y)
 
