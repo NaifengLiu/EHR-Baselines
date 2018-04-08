@@ -41,14 +41,18 @@ with open("./data/training/training.csv") as f:
     enc.fit(tmp_tmp)
 
     pmt = enc.transform(tmp_tmp).toarray()
-    print pmt
+    # print pmt
 
     result = []
 
     for i in range(len(tmp)):
         result.append(tmp[i] + pmt[i].astype(int).tolist())
 
-    print result
+    # print result
+
+    result = np.array(result)
+
+    print result.shape
 
     np.savetxt("X", result)
 
