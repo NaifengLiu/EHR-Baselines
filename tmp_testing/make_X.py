@@ -65,5 +65,5 @@ with open("./data/training/training.csv") as f:
 
     print result.shape
 
-    # np.savetxt("X", result)
+    np.savetxt("./data/training/X", result)
 
