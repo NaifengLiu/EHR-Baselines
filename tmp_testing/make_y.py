@@ -7,6 +7,8 @@ with open("./data/training/training.csv") as f:
     lines = f.readlines()
     for line in lines:
         split = line.split(",")
+        if split[-1] not in result_group:
+            print line
         y.append(result_group.index(split[-1]))
 
 y = np.array(y)
