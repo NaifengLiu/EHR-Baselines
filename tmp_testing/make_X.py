@@ -33,6 +33,8 @@ with open("./data/training/training.csv") as f:
                 if i == 7:
                     if len(split[i]) >= 5:
                         line_tmp.append("10101010")
+                    else:
+                        line_tmp.append(split[i])
                 else:
                     line_tmp.append(split[i])
             else:
