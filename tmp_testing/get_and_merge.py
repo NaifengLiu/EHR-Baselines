@@ -24,9 +24,12 @@ with open("./data/training/training.csv", "w+") as w:
         with open("./data/training/"+str(i)+".csv", "rb") as f:
             f.readline()
             reader = csv.reader(f)
-            for row in reader:
-                print row
-                break
+            for line in reader:
+                split = line.strip().split(",")
+                if len(split) != q:
+                    print len(split)
+                    q = len(split)
+                    print line
 
 
 
