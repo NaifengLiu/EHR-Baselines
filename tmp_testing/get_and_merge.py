@@ -22,6 +22,7 @@ q = 0
 with open("./data/training/training.csv", "w+") as w:
     for i in range(1, 8):
         with open("./data/training/"+str(i)+".csv", "rb") as f:
+            f.readline()
             reader = csv.reader(f)
             for row in reader:
                 print row
