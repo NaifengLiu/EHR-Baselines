@@ -19,9 +19,9 @@ import csv
 
 q = 0
 
-with open("./data/testing/testing.csv", "w+") as w:
-    for i in range(1, 4):
-        with open("./data/testing/"+str(i)+".csv", "rb") as f:
+with open("./data/unknowndata/unknowndata.csv", "w+") as w:
+    for i in range(1, 6):
+        with open("./data/unknowndata/"+str(i)+".csv", "rb") as f:
             f.readline()
             reader = csv.reader(f)
             for line in reader:
