@@ -94,12 +94,12 @@ with open("./data/training/training.csv") as f_1:
 
             for line in lines_2:
                 split = line.rstrip().split(",")
-                if split[10] not in group_2:
+                if split[10] not in group_10:
                     group_10.append(split[10])
 
             for line in lines_3:
                 split = line.rstrip().split(",")
-                if split[10] not in group_2:
+                if split[10] not in group_10:
                     group_10.append(split[10])
 
 print group_2
