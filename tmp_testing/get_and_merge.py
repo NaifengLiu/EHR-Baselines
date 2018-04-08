@@ -25,7 +25,7 @@ with open("./data/training/training.csv", "w+") as w:
             f.readline()
             reader = csv.reader(f)
             for line in reader:
-                split = line.strip().split(",")
+                split = line
                 if len(split) != q:
                     print len(split)
                     q = len(split)
