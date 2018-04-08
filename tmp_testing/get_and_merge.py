@@ -26,10 +26,29 @@ with open("./data/training/training.csv", "w+") as w:
             reader = csv.reader(f)
             for line in reader:
                 split = line
-                if len(split) != q:
-                    print len(split)
-                    q = len(split)
-                    print line
+                w.write(split[5])
+                w.write(',')
+                w.write(split[2])
+                w.write(',')
+                w.write(split[7])
+                w.write(',')
+                w.write(split[16])
+                w.write(',')
+                w.write(split[19])
+                w.write(',')
+                w.write(split[36])
+                w.write(',')
+                w.write(split[40])
+                w.write(',')
+                w.write(split[69])
+                w.write(',')
+                w.write(split[72])
+                w.write(',')
+                w.write(split[73])
+                w.write(',')
+                w.write(split[77])
+                w.write('\n')
+
 
 
 
