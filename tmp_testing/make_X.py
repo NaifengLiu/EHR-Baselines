@@ -22,7 +22,7 @@ tmp_tmp = []
 
 q = 0
 
-with open("./data/training/training.csv") as f:
+with open("./data/testing/testing.csv") as f:
     lines = f.readlines()
 
     for line in lines:
@@ -65,5 +65,5 @@ with open("./data/training/training.csv") as f:
 
     print result.shape
 
-    np.savetxt("./data/training/X", result)
+    np.savetxt("./data/testing/X", result)
 
