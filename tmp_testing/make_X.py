@@ -42,6 +42,7 @@ with open("./data/training/training.csv") as f:
 
         tmp_tmp.append([group_2.index(split[2]), group_4.index(split[4]), 0, group_10.index(split[10])])
 
+    print len(tmp)
     enc = preprocessing.OneHotEncoder()
     enc.fit(tmp_tmp)
 
@@ -53,7 +54,7 @@ with open("./data/training/training.csv") as f:
     for i in range(len(tmp)):
         result.append(tmp[i] + pmt[i].astype(int).tolist())
 
-    # print result
+    print len(result)
 
     result = np.array(result)
 
