@@ -1,113 +1,49 @@
-with open("./data/training/training.csv") as f:
-    lines = f.readlines()
-    length = len(lines[0].split(","))
+# 1 3 5 6 7 8
+import numpy as np
+from sklearn import preprocessing
 
-    q = 0
-    for line in lines:
-        split = line.rstrip().split(",")
-        if split[0] != "" and q <= 5:
-            print split[0]
+tmp = []
+
+tmp_tmp = []
+
+with open("./data/training/X.csv", "w+") as w:
+    with open("./data/training/training.csv") as f:
+        lines = f.readlines()
+
+        q = 0
+
+        for line in lines:
+            split = line.rstrip().split(",")
+            line_tmp = []
+            for i in [1, 3, 5, 6, 7, 8]:
+                if split[i] != "":
+                    line_tmp.append(split[i])
+                else:
+                    line_tmp.append("10101010")
+            if len(line_tmp) == 6:
+                tmp.append(line_tmp)
+
+            tmp_tmp.append([split[2], split[4], split[9], split[10]])
+
             q += 1
 
-    print "\n\n"
+            if q >= 10:
+                break
 
-    q = 0
-    for line in lines:
-        split = line.rstrip().split(",")
-        if split[1] != "" and q <= 5:
-            print split[1]
-            q += 1
+        enc = preprocessing.OneHotEncoder()
+        enc.fit(tmp_tmp)
 
-    print "\n\n"
+        pmt = enc.transform(tmp_tmp).toarray()
+        print pmt
 
-    q = 0
-    for line in lines:
-        split = line.rstrip().split(",")
-        if split[2] != "" and q <= 5:
-            print split[2]
-            q += 1
+        result = []
 
-    print "\n\n"
+        for i in range(len(tmp)):
+            result.append(tmp[i] + pmt[i].astype(int).tolist())
 
-    q = 0
-    for line in lines:
-        split = line.rstrip().split(",")
-        if split[3] != "" and q <= 5:
-            print split[3]
-            q += 1
+        print result
 
-    print "\n\n"
-
-    q = 0
-    for line in lines:
-        split = line.rstrip().split(",")
-        if split[4] != "" and q <= 5:
-            print split[4]
-            q += 1
-
-    print "\n\n"
-
-    q = 0
-    for line in lines:
-        split = line.rstrip().split(",")
-        if split[5] != "" and q <= 5:
-            print split[5]
-            q += 1
-
-    print "\n\n"
-
-    q = 0
-    for line in lines:
-        split = line.rstrip().split(",")
-        if split[6] != "" and q <= 5:
-            print split[6]
-            q += 1
-
-    print "\n\n"
-
-    q = 0
-    for line in lines:
-        split = line.rstrip().split(",")
-        if split[7] != "" and q <= 5:
-            print split[7]
-            q += 1
-
-    print "\n\n"
-
-    q = 0
-    for line in lines:
-        split = line.rstrip().split(",")
-        if split[8] != "" and q <= 5:
-            print split[8]
-            q += 1
-
-    print "\n\n"
-
-    q = 0
-    for line in lines:
-        split = line.rstrip().split(",")
-        if split[9] != "" and q <= 5:
-            print split[9]
-            q += 1
-
-    print "\n\n"
-
-    q = 0
-    for line in lines:
-        split = line.rstrip().split(",")
-        if split[10] != "" and q <= 5:
-            print split[10]
-            q += 1
-
-    print "\n\n"
-
-    q = 0
-    for line in lines:
-        split = line.rstrip().split(",")
-        if split[11] != "" and q <= 5:
-            print split[11]
-            q += 1
-
-
+        # result = np.array(result).astype(int)
+        # np.savetxt("result", result)
 
 
