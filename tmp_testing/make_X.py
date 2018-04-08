@@ -35,7 +35,7 @@ with open("./data/training/X.csv", "w+") as w:
                 else:
                     line_tmp.append("10101010")
             if len(line_tmp) == 6:
-                line_tmp = map(int, line_tmp)
+                line_tmp = map(float, line_tmp)
                 tmp.append(line_tmp)
 
             tmp_tmp.append([group_2.index(split[2]), group_4.index(split[4]), 0, group_10.index(split[10])])
