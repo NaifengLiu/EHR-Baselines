@@ -20,6 +20,8 @@ tmp = []
 
 tmp_tmp = []
 
+q = 0
+
 with open("./data/training/training.csv") as f:
     lines = f.readlines()
 
@@ -39,9 +41,10 @@ with open("./data/training/training.csv") as f:
             line_tmp = map(float, line_tmp)
             # print line
             tmp.append(line_tmp)
-
+        q += 1
         tmp_tmp.append([group_2.index(split[2]), group_4.index(split[4]), 0, group_10.index(split[10])])
 
+    print q
     print len(tmp)
     enc = preprocessing.OneHotEncoder()
     enc.fit(tmp_tmp)
