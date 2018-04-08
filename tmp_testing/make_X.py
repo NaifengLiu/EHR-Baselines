@@ -26,6 +26,18 @@ tmp_tmp_2 = []
 tmp_tmp_3 = []
 
 with open("./data/training/training.csv") as f1:
+    lines = f1.readlines()
+    for line in lines:
+        split = line.rstrip().split(",")
+        if split[2] not in group_2:
+            print line
+        if split[4] not in group_4:
+            print line
+        if split[10] not in group_10:
+            print line
+
+
+with open("./data/training/training.csv") as f1:
     with open("./data/testing/testing.csv") as f2:
         with open("./data/unknowndata/unknowndata.csv") as f3:
             lines_1 = f1.readlines()
