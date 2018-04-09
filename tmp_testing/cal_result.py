@@ -53,6 +53,7 @@ unknown_labels = np.loadtxt("./data/unknowndata/result_labels")
 unknown_prob = np.loadtxt("./data/unknowndata/result_prob")
 
 with open("./data/unknowndata/5mresult.csv", "w+") as w:
+    w.write("ID,Predicted_Label,RLS_PROB,PARK_PROB,FIBRO_PROB\n")
     with open("./data/unknowndata/unknowndata.csv") as f:
         lines = f.readlines()
         for i in range(len(lines)):
