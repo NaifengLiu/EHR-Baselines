@@ -62,11 +62,11 @@ with open("./data/unknowndata/5mresult.csv", "w+") as w:
             w.write(",")
             w.write(result_group[int(unknown_labels[i])])
             w.write(",")
-            w.write(unknown_prob[i][0])
+            w.write(str(unknown_prob[i][0]))
             w.write(",")
-            w.write(unknown_prob[i][1])
+            w.write(str(unknown_prob[i][1]))
             w.write(",")
-            w.write(unknown_prob[i][2])
+            w.write(str(unknown_prob[i][2]))
             w.write("\n")
 
 
