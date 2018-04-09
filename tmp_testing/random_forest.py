@@ -4,45 +4,30 @@ from sklearn.metrics import precision_recall_curve
 from sklearn.metrics import average_precision_score
 import numpy as np
 
-X = np.loadtxt("result")
-y = np.loadtxt("y")
+X_train = np.loadtxt("./data/training/X")
+y_train = np.loadtxt("./data/training/y")
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+X_test = np.loadtxt("./data/testing/X")
+y_test = np.loadtxt("./data/testing/y")
 
-X_train = np.delete(X_train, 0, axis=1)
-x_test_id = X_test[:, 0]
-X_test = np.delete(X_test, 0, axis=1)
+X_unknown = np.loadtxt("./data/unknowndata/X")
 
 clf = RandomForestClassifier(n_estimators=10, max_depth=5, oob_score=True)
 
 clf.fit(X_train, y_train)
-labels = clf.predict(X_test)
-prob = clf.predict_proba(X_test)
 
-np.savetxt("labels", labels)
-np.savetxt("ytest", y_test)
-np.savetxt("prob", prob)
+testing_labels = clf.predict(X_test)
+testing_prob = clf.predict_proba(X_test)
+np.savetxt("./data/testing/result_labels", testing_labels)
+np.savetxt("./data/testing/result_prob", testing_prob)
 
-max_p = np.amax(prob, axis=1)
-
-tmp = np.stack((x_test_id, y_test, labels, max_p)).T
-
-print tmp.shape
-
-np.savetxt("output", tmp)
-
-with open("output.csv", "w+") as w:
-    w.write("id,label,predicted_label,prob\n")
-    for i in range(len(tmp)):
-        w.write(str(tmp[i][0].astype(int)))
-        w.write(",")
-        w.write(str(tmp[i][1].astype(int)))
-        w.write(",")
-        w.write(str(tmp[i][2].astype(int)))
-        w.write(",")
-        w.write(str(tmp[i][3]))
-        w.write("\n")
 
 print clf.oob_score_
-
 print clf.score(X_test, y_test)
+
+
+unknown_labels = clf.predict(X_unknown)
+unknown_prob = clf.predict_proba(X_unknown)
+np.savetxt("./data/unknowndata/result_labels", unknown_labels)
+np.savetxt("./data/unknowndata/result_prob", unknown_prob)
+
