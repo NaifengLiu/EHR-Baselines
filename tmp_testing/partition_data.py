@@ -48,18 +48,18 @@ def partition(x_path, y_path):
                 fibro.append(i)
 
     for i in range(8):
-        # rls
-        tmp = rls[i * 412071: (i + 1) * 412071]
-        tmp_save = X[tmp, :]
-        print tmp_save.shape
-        np.savetxt("./data/training/rls_" + str(i), tmp_save)
-        # park
-        tmp = park[i * 412354: (i + 1) * 412354]
-        tmp_save = X[tmp, :]
-        print tmp_save.shape
-        np.savetxt("./data/training/park_" + str(i), tmp_save)
+        # # rls
+        # tmp = rls[i * 412071: (i + 1) * 412071]
+        # tmp_save = X[tmp, :]
+        # print tmp_save.shape
+        # np.savetxt("./data/training/rls_" + str(i), tmp_save)
+        # # park
+        # tmp = park[i * 412354: (i + 1) * 412354]
+        # tmp_save = X[tmp, :]
+        # print tmp_save.shape
+        # np.savetxt("./data/training/park_" + str(i), tmp_save)
         # fibro
-        tmp = fibro
+        tmp = fibro[i * 50539: (i + 1) * 50539]
         tmp_save = X[tmp, :]
         print tmp_save.shape
         np.savetxt("./data/training/fibro_" + str(i), tmp_save)
