@@ -23,5 +23,4 @@ def count(file_path):
     print float(fibro)/float(len(y))
 
 
-
-
+count("./data/training/y")
