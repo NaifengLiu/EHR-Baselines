@@ -64,7 +64,12 @@ def partition(x_path, y_path):
             print len(undersampling_rls)
             print len(undersampling_park)
             print len(undersampling_fibro)
-            break
+
+            undersampling = undersampling_rls + undersampling_park + undersampling_fibro
+            this_X = X[undersampling, :]
+            this_y = np.concatenate((len(undersampling_rls), len(undersampling_park), len(undersampling_fibro)), axis=0)
+            np.savetxt(str(i)+str(j)+"_X", this_X)
+            np.savetxt(str(i)+str(j)+"_y", this_y)
 
         # # rls
         # tmp = rls[i * 412071: (i + 1) * 412071]
