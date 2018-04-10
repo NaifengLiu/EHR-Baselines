@@ -37,13 +37,14 @@ def partition(x_path, y_path):
     fibro = []
 
     for i in range(len(y)):
-        if int(y[i]) == 0:
-            if len(rls) < 412071 * 8:
-                rls.append(i)
-        elif int(y[i]) == 1:
-            if len(park) < 412354 * 8:
-                park.append(i)
-        elif int(y[i]) == 2:
+        # if int(y[i]) == 0:
+        #     if len(rls) < 412071 * 8:
+        #         rls.append(i)
+        # elif int(y[i]) == 1:
+        #     if len(park) < 412354 * 8:
+        #         park.append(i)
+        # el
+        if int(y[i]) == 2:
             if len(fibro) < 404314:
                 fibro.append(i)
 
