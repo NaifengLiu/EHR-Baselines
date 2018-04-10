@@ -37,18 +37,35 @@ def partition(x_path, y_path):
     fibro = []
 
     for i in range(len(y)):
-        # if int(y[i]) == 0:
-        #     if len(rls) < 412071 * 8:
-        #         rls.append(i)
-        # elif int(y[i]) == 1:
-        #     if len(park) < 412354 * 8:
-        #         park.append(i)
-        # el
-        if int(y[i]) == 2:
-            if len(fibro) < 404314:
-                fibro.append(i)
+        if int(y[i]) == 0:
+            rls.append(i)
+        elif int(y[i]) == 1:
+            park.append(i)
+        elif int(y[i]) == 2:
+            fibro.append(i)
 
     for i in range(8):
+        this_fold_rls_validation = rls[i * (len(rls) / 8):(i + 1) * (len(rls) / 8)]
+        this_fold_rls_train = [item for item in rls if item not in this_fold_rls_validation]
+        this_fold_park_validation = park[i * (len(park) / 8):(i + 1) * (len(park) / 8)]
+        this_fold_park_train = [item for item in park if item not in this_fold_park_validation]
+        this_fold_fibro_validation = fibro[i * (len(fibro) / 8):(i + 1) * (len(fibro) / 8)]
+        this_fold_fibro_train = [item for item in fibro if item not in this_fold_fibro_validation]
+        for j in range(8):
+            undersampling_rls = this_fold_rls_train[
+                                j * (len(this_fold_rls_train) / 8):(j + 1) * (len(this_fold_rls_train) / 8)]
+            undersampling_park = this_fold_park_train[
+                                 j * (len(this_fold_park_train) / 8):(j + 1) * (len(this_fold_park_train) / 8)]
+            undersampling_fibro = this_fold_fibro_train
+
+            print len(this_fold_rls_validation)
+            print len(this_fold_park_validation)
+            print len(this_fold_fibro_validation)
+            print len(undersampling_rls)
+            print len(undersampling_park)
+            print len(undersampling_fibro)
+            break
+
         # # rls
         # tmp = rls[i * 412071: (i + 1) * 412071]
         # tmp_save = X[tmp, :]
@@ -60,10 +77,10 @@ def partition(x_path, y_path):
         # print tmp_save.shape
         # np.savetxt("./data/training/park_" + str(i), tmp_save)
         # fibro
-        tmp = fibro[i * 50539: (i + 1) * 50539]
-        tmp_save = X[tmp, :]
-        print tmp_save.shape
-        np.savetxt("./data/training/fibro_" + str(i), tmp_save)
+        # tmp = fibro[i * 50539: (i + 1) * 50539]
+        # tmp_save = X[tmp, :]
+        # print tmp_save.shape
+        # np.savetxt("./data/training/fibro_" + str(i), tmp_save)
 
 
 partition("./data/training/X", "./data/training/y")
