@@ -67,25 +67,26 @@ def partition(x_path, y_path):
 
             undersampling = undersampling_rls + undersampling_park + undersampling_fibro
             this_X = X[undersampling, :]
-            this_y = np.concatenate((len(undersampling_rls), len(undersampling_park), len(undersampling_fibro)), axis=0)
-            np.savetxt(str(i)+str(j)+"_X", this_X)
-            np.savetxt(str(i)+str(j)+"_y", this_y)
+            this_y = np.concatenate((np.zeros(len(undersampling_rls)), np.zeros(len(undersampling_park)) + 1,
+                                     np.zeros(len(undersampling_fibro)) + 2), axis=0)
+            np.savetxt(str(i) + str(j) + "_X", this_X)
+            np.savetxt(str(i) + str(j) + "_y", this_y)
 
-        # # rls
-        # tmp = rls[i * 412071: (i + 1) * 412071]
-        # tmp_save = X[tmp, :]
-        # print tmp_save.shape
-        # np.savetxt("./data/training/rls_" + str(i), tmp_save)
-        # # park
-        # tmp = park[i * 412354: (i + 1) * 412354]
-        # tmp_save = X[tmp, :]
-        # print tmp_save.shape
-        # np.savetxt("./data/training/park_" + str(i), tmp_save)
-        # fibro
-        # tmp = fibro[i * 50539: (i + 1) * 50539]
-        # tmp_save = X[tmp, :]
-        # print tmp_save.shape
-        # np.savetxt("./data/training/fibro_" + str(i), tmp_save)
+            # # rls
+            # tmp = rls[i * 412071: (i + 1) * 412071]
+            # tmp_save = X[tmp, :]
+            # print tmp_save.shape
+            # np.savetxt("./data/training/rls_" + str(i), tmp_save)
+            # # park
+            # tmp = park[i * 412354: (i + 1) * 412354]
+            # tmp_save = X[tmp, :]
+            # print tmp_save.shape
+            # np.savetxt("./data/training/park_" + str(i), tmp_save)
+            # fibro
+            # tmp = fibro[i * 50539: (i + 1) * 50539]
+            # tmp_save = X[tmp, :]
+            # print tmp_save.shape
+            # np.savetxt("./data/training/fibro_" + str(i), tmp_save)
 
 
 partition("./data/training/X", "./data/training/y")
