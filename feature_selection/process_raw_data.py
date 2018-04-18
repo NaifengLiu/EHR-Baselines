@@ -1,7 +1,7 @@
 import numpy as np
 import csv
 
-a = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+a = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 with open("./data/diag_grp_1M_10.csv", "rb") as f:
     f.readline()
