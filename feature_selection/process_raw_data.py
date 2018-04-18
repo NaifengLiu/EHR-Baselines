@@ -308,6 +308,7 @@ with open("./data/diag_grp_1M_48.csv", "rb") as f:
                 split[i] = "10101010"
             line_tmp.append(split[i])
         if len(line_tmp) == len(b):
+            print line_tmp
             line_tmp = map(float, line_tmp)
             tmp.append(line_tmp)
         tmp_tmp.append(
