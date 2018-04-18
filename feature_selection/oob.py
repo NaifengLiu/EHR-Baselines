@@ -19,13 +19,21 @@ print(__doc__)
 RANDOM_STATE = 123
 
 # Generate a binary classification dataset.
-X = np.loadtxt("./data/X")
-y = np.loadtxt("./data/y")
+X = np.loadtxt("./data/X_48")
+y = np.loadtxt("./data/y_48")
 
 # NOTE: Setting the `warm_start` construction parameter to `True` disables
 # support for parallelized ensembles but is necessary for tracking the OOB
 # error trajectory during training.
 ensemble_clfs = [
+    ("RandomForestClassifier, max_features='sqrt'",
+        RandomForestClassifier(warm_start=True, oob_score=True,
+                               max_features="sqrt",
+                               random_state=RANDOM_STATE)),
+    ("RandomForestClassifier, max_features='log2'",
+        RandomForestClassifier(warm_start=True, max_features='log2',
+                               oob_score=True,
+                               random_state=RANDOM_STATE)),
     ("RandomForestClassifier, max_features=None",
         RandomForestClassifier(warm_start=True, max_features=None,
                                oob_score=True,
@@ -49,6 +57,7 @@ for label, clf in ensemble_clfs:
         error_rate[label].append((i, oob_error))
 
 fig = plt.figure()
+
 # Generate the "OOB error rate" vs. "n_estimators" plot.
 for label, clf_err in error_rate.items():
     xs, ys = zip(*clf_err)
@@ -58,4 +67,4 @@ plt.xlim(min_estimators, max_estimators)
 plt.xlabel("n_estimators")
 plt.ylabel("OOB error rate")
 plt.legend(loc="upper right")
-fig.savefig('temp.png')
+fig.savefig('temp2.png')
