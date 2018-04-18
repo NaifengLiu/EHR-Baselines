@@ -315,7 +315,7 @@ with open("./data/diag_grp_1M_48.csv", "rb") as f:
              group_16.index(split[16]), group_17.index(split[17]), group_29.index(split[29]), group_44.index(split[44]),
              group_45.index(split[45]), group_46.index(split[46]), group_47.index(split[47]),
              group_48.index(split[48])])
-        y_tmp.append(y_group.index(split[11]))
+        y_tmp.append(y_group.index(split[49]))
     enc = preprocessing.OneHotEncoder()
     enc.fit(tmp_tmp)
 
