@@ -9,9 +9,12 @@ with open("./data/diag_grp_1M_10.csv", "rb") as f:
     for line in reader:
         split = line
         for i in range(len(split)):
-            print split[i]
-            print split[i][0]
-            if str(split[i][0]).isalpha():
-                a[i] = 1
+            # print split[i]
+            # print split[i][0]
+            if split[i] == "":
+                continue
+            else:
+                if str(split[i][0]).isalpha():
+                    a[i] = 1
 
 print a
