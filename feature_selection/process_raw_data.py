@@ -293,7 +293,7 @@ tmp_tmp = []
 y_tmp = []
 
 b = [0, 3, 5, 7, 8, 9, 10, 11, 12, 14, 15, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 30, 31, 32, 33, 34, 35, 36,
-     37, 38, 40, 41, 42, 43]
+     37, 38, 40, 41, 43]
 c = [1, 4, 6, 13, 16, 17, 29, 44, 45, 46, 47, 48]
 d = [49]
 
@@ -308,9 +308,11 @@ with open("./data/diag_grp_1M_48.csv", "rb") as f:
                 split[i] = "10101010"
             line_tmp.append(split[i])
         if len(line_tmp) == len(b):
-            print line_tmp
+            # print line_tmp
             line_tmp = map(float, line_tmp)
             tmp.append(line_tmp)
+        else:
+            print "ERROR"
         tmp_tmp.append(
             [group_1.index(split[1]), group_4.index(split[4]), group_6.index(split[6]), group_13.index(split[13]),
              group_16.index(split[16]), group_17.index(split[17]), group_29.index(split[29]), group_44.index(split[44]),
