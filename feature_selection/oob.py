@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from collections import OrderedDict
-from sklearn.datasets import make_classification
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
 
 # Author: Kian Ho <hui.kian.ho@gmail.com>
