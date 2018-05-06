@@ -1,21 +1,22 @@
-test_data_len = 3
-train_data_len = 5
+import numpy as np
+
+group_0 = []
+group_1 = []
+group_2 = []
+group_3 = []
+group_4 = []
+group_5 = []
+group_6 = []
+group_7 = []
+group = [[],[],[],[],[],[],[],[]]
 
 
-def merge_data():
-    with open("./data/test.csv", "w") as w:
-        for i in range(1, test_data_len+1):
-            with open("./data/test"+str(i)+".csv") as f:
-                for line in f.readlines():
-                    w.write(line)
-                f.close()
+with open("./data/test.csv") as f:
+    for lines in f.readlines():
+        split = lines.rstrip().split(",")
+        for i in range(8):
+            if split[i] not in group[i]:
+                group[i].append(split[i])
 
-    with open("./data/train.csv", "w") as w:
-        for i in range(1, train_data_len+1):
-            with open("./data/train"+str(i)+".csv") as f:
-                for line in f.readlines():
-                    w.write(line)
-                f.close()
-
-
-merge_data()
+for sub_group in group:
+    print sub_group
