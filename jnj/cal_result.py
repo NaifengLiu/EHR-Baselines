@@ -7,7 +7,7 @@ right = 0
 wrong = 0
 
 for i in range(len(y_result)):
-    if y_result == y_truth:
+    if y_result[i] == y_truth[i]:
         right += 1
     else:
         wrong += 1
