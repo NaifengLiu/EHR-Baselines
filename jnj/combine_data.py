@@ -14,6 +14,7 @@ def merge_data():
     with open("./data/train.csv", "w") as w:
         for i in range(1, train_data_len + 1):
             with open("./data/train" + str(i) + ".csv") as f:
+                f.readline()
                 for line in f.readlines():
                     w.write(line)
                 f.close()
