@@ -9,7 +9,7 @@ with open("./data/test.csv") as f:
         for i in range(8):
             if split[i] not in group[i]:
                 group[i].append(split[i])
-with open("./data/test.csv") as f:
+with open("./data/train.csv") as f:
     for lines in f.readlines():
         split = lines.rstrip().split(",")
         for i in range(8):
@@ -32,7 +32,7 @@ with open("./data/test.csv") as f:
         tmp_x = []
         y_test.append(group[7].index(split[7]))
         for i in range(7):
-            tmp_x.append(split[i])
+            tmp_x.append(group[i].index(split[i]))
         all_data.append(tmp_x)
         x_test_tmp.append(tmp_x)
     f.close()
@@ -47,7 +47,7 @@ with open("./data/train.csv") as f:
         tmp_x = []
         y_train.append(group[7].index(split[7]))
         for i in range(7):
-            tmp_x.append(split[i])
+            tmp_x.append(group[i].index(split[i]))
         all_data.append(tmp_x)
         x_train_tmp.append(tmp_x)
     f.close()
