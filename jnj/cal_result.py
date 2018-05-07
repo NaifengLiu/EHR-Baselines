@@ -11,6 +11,6 @@ wrong = 0
 matrix = np.array((9, 9))
 
 for i in range(len(y_truth)):
-    matrix[int(y_truth[i]), int(y_result[i])] += 1
+    matrix[int(y_truth[i])][int(y_result[i])] += 1
 
 print matrix
