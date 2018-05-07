@@ -3,6 +3,9 @@ from sklearn import preprocessing
 
 group = [[], [], [], [], [], [], [], []]
 
+for sub_group in group:
+    print sub_group
+
 with open("./data/test.csv") as f:
     for lines in f.readlines():
         split = lines.rstrip().split(",")
