@@ -3,21 +3,21 @@ from sklearn import preprocessing
 
 group = [[], [], [], [], [], [], [], []]
 
+with open("./data/test.csv") as f:
+    for lines in f.readlines():
+        split = lines.rstrip().split(",")
+        for i in range(8):
+            if split[i] not in group[i]:
+                group[i].append(split[i])
+with open("./data/test.csv") as f:
+    for lines in f.readlines():
+        split = lines.rstrip().split(",")
+        for i in range(8):
+            if split[i] not in group[i]:
+                group[i].append(split[i])
+
 for sub_group in group:
     print sub_group
-
-with open("./data/test.csv") as f:
-    for lines in f.readlines():
-        split = lines.rstrip().split(",")
-        for i in range(8):
-            if split[i] not in group[i]:
-                group[i].append(split[i])
-with open("./data/test.csv") as f:
-    for lines in f.readlines():
-        split = lines.rstrip().split(",")
-        for i in range(8):
-            if split[i] not in group[i]:
-                group[i].append(split[i])
 
 all_data = []
 
