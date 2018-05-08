@@ -16,18 +16,23 @@ classes_3400 = ['PAD_ACS']
 #             f.close()
 #         w.close()
 
+# for i in range(12):
+#     with open("data/5_fold_data/undersampling_data/" + str(i), "w") as w:
+#         for this_class in classes_40800:
+#             with open("./data/subdata/" + this_class) as f:
+#                 lines = f.readlines()
+#                 for line in lines[i * 3400:(i + 1) * 3400]:
+#                     w.write(line)
+#                 f.close()
+#         for this_class in classes_3400:
+#             with open("./data/subdata/" + this_class) as f:
+#                 lines = f.readlines()
+#                 for line in lines:
+#                     w.write(line)
+#                 f.close()
+#         w.close()
+
 for i in range(12):
-    with open("data/5_fold_data/undersampling_data/" + str(i), "w") as w:
-        for this_class in classes_40800:
-            with open("./data/subdata/" + this_class) as f:
-                lines = f.readlines()
-                for line in lines[i * 3400:(i + 1) * 3400]:
-                    w.write(line)
-                f.close()
-        for this_class in classes_3400:
-            with open("./data/subdata/" + this_class) as f:
-                lines = f.readlines()
-                for line in lines:
-                    w.write(line)
-                f.close()
-        w.close()
+    with open("data/5_fold_data/undersampling_data/" + str(i)) as f:
+        print len(f.readlines())
+
