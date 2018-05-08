@@ -36,25 +36,28 @@
 #     with open("data/5_fold_data/undersampling_data/" + str(i)) as f:
 #         print len(f.readlines())
 
-a = range(3400)
-folds_index = []
-for i in range(5):
-    b = range(i*680, (i+1)*680)
-    c = [item for item in a if item not in b]
-    folds_index.append(c)
+# a = range(3400)
+# folds_index = []
+# for i in range(5):
+#     b = range(i*680, (i+1)*680)
+#     c = [item for item in a if item not in b]
+#     folds_index.append(c)
 
 # print folds_index
 
+# for i in range(5):
+#     for j in range(12):
+#         with open("./data/5_fold_data/" + str(i) + "_" + str(j), "w") as w:
+#             with open("./data/5_fold_data/undersampling_data/" + str(j)) as f:
+#                 lines = f.readlines()
+#                 for k in range(9):
+#                     this_class = lines[k*3400:(k+1)*3400]
+#                     for item in folds_index[i]:
+#                         w.write(this_class[item])
+#                 f.close()
+#             w.close()
+
 for i in range(5):
     for j in range(12):
-        with open("./data/5_fold_data/" + str(i) + "_" + str(j), "w") as w:
-            with open("./data/5_fold_data/undersampling_data/" + str(j)) as f:
-                lines = f.readlines()
-                for k in range(9):
-                    this_class = lines[k*3400:(k+1)*3400]
-                    for item in folds_index[i]:
-                        w.write(this_class[item])
-                f.close()
-            w.close()
-
-
+        with open("./data/5_fold_data/" + str(i) + "_" + str(j)) as f:
+            print len(f.readlines())
