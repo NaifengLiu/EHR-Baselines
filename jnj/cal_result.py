@@ -34,22 +34,34 @@ import numpy as np
 #
 # print tmp
 
+# for i in range(5):
+#     tmp_0 = np.loadtxt("./result/5_fold_result/"+str(i)+"_0")
+#     tmp_1 = np.loadtxt("./result/5_fold_result/"+str(i)+"_1")
+#     tmp_2 = np.loadtxt("./result/5_fold_result/"+str(i)+"_2")
+#     tmp_3 = np.loadtxt("./result/5_fold_result/"+str(i)+"_3")
+#     tmp_4 = np.loadtxt("./result/5_fold_result/"+str(i)+"_4")
+#     tmp_5 = np.loadtxt("./result/5_fold_result/"+str(i)+"_5")
+#     tmp_6 = np.loadtxt("./result/5_fold_result/"+str(i)+"_6")
+#     tmp_7 = np.loadtxt("./result/5_fold_result/"+str(i)+"_7")
+#     tmp_8 = np.loadtxt("./result/5_fold_result/"+str(i)+"_8")
+#     tmp_9 = np.loadtxt("./result/5_fold_result/"+str(i)+"_9")
+#     tmp_10 = np.loadtxt("./result/5_fold_result/"+str(i)+"_10")
+#     tmp_11 = np.loadtxt("./result/5_fold_result/"+str(i)+"_11")
+#     tmp = (tmp_0 + tmp_1 + tmp_2 + tmp_3 + tmp_4 + tmp_5 + tmp_6 + tmp_7 + tmp_8 + tmp_9 + tmp_10 + tmp_11) / 12
+#     print tmp.shape
+#     np.savetxt("./result/5_fold_result/"+str(i), tmp)
+
+
 for i in range(5):
-    tmp_0 = np.loadtxt("./result/5_fold_result/"+str(i)+"_0")
-    tmp_1 = np.loadtxt("./result/5_fold_result/"+str(i)+"_1")
-    tmp_2 = np.loadtxt("./result/5_fold_result/"+str(i)+"_2")
-    tmp_3 = np.loadtxt("./result/5_fold_result/"+str(i)+"_3")
-    tmp_4 = np.loadtxt("./result/5_fold_result/"+str(i)+"_4")
-    tmp_5 = np.loadtxt("./result/5_fold_result/"+str(i)+"_5")
-    tmp_6 = np.loadtxt("./result/5_fold_result/"+str(i)+"_6")
-    tmp_7 = np.loadtxt("./result/5_fold_result/"+str(i)+"_7")
-    tmp_8 = np.loadtxt("./result/5_fold_result/"+str(i)+"_8")
-    tmp_9 = np.loadtxt("./result/5_fold_result/"+str(i)+"_9")
-    tmp_10 = np.loadtxt("./result/5_fold_result/"+str(i)+"_10")
-    tmp_11 = np.loadtxt("./result/5_fold_result/"+str(i)+"_11")
-    tmp = (tmp_0 + tmp_1 + tmp_2 + tmp_3 + tmp_4 + tmp_5 + tmp_6 + tmp_7 + tmp_8 + tmp_9 + tmp_10 + tmp_11) / 12
-    print tmp.shape
-    np.savetxt("./result/5_fold_result/"+str(i), tmp)
+    tmp_0 = np.loadtxt("./result/5_fold_result/sum/0")
+    tmp_1 = np.loadtxt("./result/5_fold_result/sum/1")
+    tmp_2 = np.loadtxt("./result/5_fold_result/sum/2")
+    tmp_3 = np.loadtxt("./result/5_fold_result/sum/3")
+    tmp_4 = np.loadtxt("./result/5_fold_result/sum/4")
+    tmp = (tmp_0 + tmp_1 + tmp_2 + tmp_3 + tmp_4) / 5
+    np.savetxt("./result/5_fold_result/sum/sum", tmp.argmax(axis=1))
+
+
 
 
 
