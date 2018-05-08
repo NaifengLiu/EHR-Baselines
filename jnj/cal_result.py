@@ -61,18 +61,4 @@ import numpy as np
 #     tmp = (tmp_0 + tmp_1 + tmp_2 + tmp_3 + tmp_4) / 5
 #     np.savetxt("./result/5_fold_result/sum/sum", tmp.argmax(axis=1))
 
-y_result = np.loadtxt("./result/5_fold_result/sum/sum")
-y_truth = np.loadtxt("./data/y_test")
-
-right = 0
-wrong = 0
-
-for i in range(len(y_truth)):
-    if y_result[i] == y_truth[i]:
-        right += 1
-    else:
-        wrong += 1
-
-print right
-print wrong
-print float(right) / float(right+wrong)
+    
