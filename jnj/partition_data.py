@@ -43,7 +43,7 @@ for i in range(5):
     c = [item for item in a if item not in b]
     folds_index.append(c)
 
-print folds_index
+# print folds_index
 
 for i in range(5):
     for j in range(12):
