@@ -1,7 +1,4 @@
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import precision_recall_curve
-from sklearn.metrics import average_precision_score
 import numpy as np
 
 X_train = np.loadtxt("./data/x_train")
