@@ -52,9 +52,8 @@ for i in range(5):
                 lines = f.readlines()
                 for k in range(9):
                     this_class = lines[k*3400:(k+1)*3400]
-                    tmp = this_class[folds_index[i]]
-                    for line in tmp:
-                        w.write(line)
+                    for item in folds_index[i]:
+                        w.write(this_class[item])
                 f.close()
             w.close()
 
