@@ -67,6 +67,12 @@ y_truth = np.loadtxt("./data/y_test")
 right = 0
 wrong = 0
 
+for i in range(len(y_truth)):
+    if y_result == y_truth:
+        right += 1
+    else:
+        wrong += 1
+
 print right
 print wrong
 print float(right) / float(right+wrong)
