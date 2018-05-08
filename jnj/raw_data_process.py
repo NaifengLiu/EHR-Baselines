@@ -78,11 +78,7 @@ def transform_and_save_x_y(input_file_name, output_file_name):
         for lines_in in f_in.readlines():
             split_in = lines_in.rstrip().split(",")
             tmp_x_in = []
-            print group[7]
-            print split[7]
-            print group[7].index(split[7])
-            print ""
-            y_tmp.append(group[7].index(split[7]))
+            y_tmp.append(group[7].index(split_in[7]))
             for k in range(7):
                 tmp_x_in.append(group[k].index(split_in[k]))
             tmp.append(tmp_x)
