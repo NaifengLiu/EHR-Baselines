@@ -61,4 +61,29 @@ import numpy as np
 #     tmp = (tmp_0 + tmp_1 + tmp_2 + tmp_3 + tmp_4) / 5
 #     np.savetxt("./result/5_fold_result/sum/sum", tmp.argmax(axis=1))
 
-    
+y_result = np.loadtxt("./result/5_fold_result/sum/sum")
+y_truth = np.loadtxt("./data/y_test")
+
+matrix = [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0]]
+
+for i in range(len(y_truth)):
+    matrix[int(y_truth[i])][int(y_result[i])] += 1
+
+print matrix
+
+tmp = []
+
+for row in matrix:
+    tmp.append([row[3], row[7], row[8], row[1], row[5], row[0], row[4], row[2], row[6]])
+
+print tmp[3]
+print tmp[7]
+print tmp[8]
+print tmp[1]
+print tmp[5]
+print tmp[0]
+print tmp[4]
+print tmp[2]
+print tmp[6]
