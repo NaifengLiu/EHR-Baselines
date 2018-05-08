@@ -49,7 +49,7 @@ for i in range(5):
     tmp_11 = np.loadtxt("./result/5_fold_result/"+str(i)+"_11")
     tmp = (tmp_0 + tmp_1 + tmp_2 + tmp_3 + tmp_4 + tmp_5 + tmp_6 + tmp_7 + tmp_8 + tmp_9 + tmp_10 + tmp_11) / 12
     print tmp.shape
-    np.save("./result/5_fold_result/"+str(i), tmp)
+    np.savetxt("./result/5_fold_result/"+str(i), tmp)
 
 
 
