@@ -85,6 +85,7 @@ def transform_and_save_x_y(input_file_name, output_file_name):
         f_in.close()
         tmp_transform = enc.transform(tmp).toarray()
         tmp_transform = np.array(tmp_transform)
+        print y_tmp
         y_tmp = np.array(y_tmp)
         np.savetxt(output_file_name + "_x", tmp_transform)
         np.savetxt(output_file_name + "_y", y_tmp)
