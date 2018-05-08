@@ -13,3 +13,7 @@ classes = ['ISCHEMIC_STROKE', 'CAD_ONLY', 'CAD_ACS', 'ACS', 'AFIB', 'PAD_ONLY', 
 #             f.close()
 #         w.close()
 
+for this_class in classes:
+    with open("./data/subdata/"+this_class) as f:
+        print len(f.readlines())
+
