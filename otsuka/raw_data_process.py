@@ -45,7 +45,7 @@ def merge_files():
                             w.write("\n")
 
 
-# merge_files()
+merge_files()
 
 
 def process_data():
