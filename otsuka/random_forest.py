@@ -7,7 +7,7 @@ y_train = np.loadtxt("./data/y_train")
 X_test = np.loadtxt("./data/x_test")
 y_test = np.loadtxt("./data/y_test")
 
-clf = RandomForestClassifier(n_estimators=50, max_depth=10, oob_score=True)
+clf = RandomForestClassifier(n_estimators=50, max_depth=10)
 
 clf.fit(X_train, y_train)
 
