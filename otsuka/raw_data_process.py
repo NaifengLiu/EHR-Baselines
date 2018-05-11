@@ -133,7 +133,7 @@ def process_data():
         x_train_final.append(x_train_tmp_0[i] + x_train[i].astype(int).tolist())
     result = np.array(x_train_final)
     print result.shape
-    np.savetxt("./data/x_test", result)
+    np.savetxt("./data/x_train", result)
 
 
 process_data()
