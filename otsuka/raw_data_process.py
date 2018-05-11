@@ -43,7 +43,7 @@ def merge_files():
                             w.write("\n")
 
 
-
+merge_files()
 
 
 
