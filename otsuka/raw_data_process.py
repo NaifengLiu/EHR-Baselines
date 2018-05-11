@@ -1,6 +1,8 @@
+import numpy as np
+from sklearn import preprocessing
 
 n_index = [3, 4, 5, 6]
-s_index = [0, 7, 8, 9, 10, 11, 12]
+s_index = [0, 7, 8, 9, 11, 12]
 
 
 def merge_files():
@@ -43,7 +45,77 @@ def merge_files():
                             w.write("\n")
 
 
-merge_files()
+# merge_files()
+
+
+def process_data():
+    group = [[], [], [], [], [], [], [], [], [], []]
+
+    with open("./data/test.csv") as f:
+        for lines in f.readlines():
+            split = lines.rstrip().split(",")
+            for i in range(4, 11):
+                if split[i] not in group[i]:
+                    group[i].append(split[i])
+    with open("./data/train.csv") as f:
+        for lines in f.readlines():
+            split = lines.rstrip().split(",")
+            for i in range(4, 11):
+                if split[i] not in group[i]:
+                    group[i].append(split[i])
+
+    for sub_group in group:
+        print sub_group
+
+    all_data = []
+    y_test = []
+    y_train = []
+    x_test_tmp = []
+    x_train_tmp = []
+
+    with open("./data/test.csv") as f:
+        for lines in f.readlines():
+            split = lines.rstrip().split(",")
+            tmp_x = []
+            y_test.append(group[9].index(split[9]))
+            for i in range(7):
+                tmp_x.append(group[i].index(split[i]))
+            all_data.append(tmp_x)
+            x_test_tmp.append(tmp_x)
+        f.close()
+
+    y_test = np.array(y_test)
+    print y_test.shape
+    np.savetxt("./data/y_test", y_test)
+
+    with open("./data/train.csv") as f:
+        for lines in f.readlines():
+            split = lines.rstrip().split(",")
+            tmp_x = []
+            y_train.append(group[9].index(split[9]))
+            for i in range(7):
+                tmp_x.append(group[i].index(split[i]))
+            all_data.append(tmp_x)
+            x_train_tmp.append(tmp_x)
+        f.close()
+
+    # y_train = np.array(y_train)
+    # print y_train.shape
+    # np.savetxt("./data/y_train", y_train)
+
+    enc = preprocessing.OneHotEncoder()
+    enc.fit(all_data)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
