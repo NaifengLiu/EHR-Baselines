@@ -9,6 +9,17 @@ y_truth = np.loadtxt("./data/y_test")
 right = 0
 wrong = 0
 
+for i in range(len(y_truth)):
+    if y_result[i] == y_truth[i]:
+        right += 1
+    else:
+        wrong += 1
+
+accuracy = float(right) / float(right + wrong)
+
+print "accuracy: "
+print accuracy
+
 matrix = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]
@@ -16,7 +27,7 @@ matrix = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0],
 for i in range(len(y_truth)):
     matrix[int(y_truth[i])][int(y_result[i])] += 1
 
-print matrix
+# print matrix
 
 tmp = []
 
@@ -43,6 +54,7 @@ for i in order:
     tmp.append(prob[i])
 
 print "chaid matrix"
+print "[354084, 223372, 390723, 1902, 111336, 37269]"
 print tmp
 
 
