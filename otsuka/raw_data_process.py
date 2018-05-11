@@ -5,7 +5,7 @@ s_index = [0, 7, 8, 9, 10, 11, 12]
 
 def merge_files():
     with open("./data/test", "w") as w:
-        for i in range(2):
+        for i in range(1, 3):
             with open("./data/test" + str(i) + ".csv") as f:
                 f.readline()
                 for line in f.readlines():
@@ -24,7 +24,7 @@ def merge_files():
                             w.write("\n")
 
     with open("./data/train", "w") as w:
-        for i in range(3):
+        for i in range(1, 4):
             with open("./data/train" + str(i) + ".csv") as f:
                 f.readline()
                 for line in f.readlines():
