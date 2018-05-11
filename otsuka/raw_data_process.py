@@ -54,13 +54,13 @@ def process_data():
     with open("./data/test.csv") as f:
         for lines in f.readlines():
             split = lines.rstrip().split(",")
-            for i in range(4, 11):
+            for i in range(4, 10):
                 if split[i] not in group[i]:
                     group[i].append(split[i])
     with open("./data/train.csv") as f:
         for lines in f.readlines():
             split = lines.rstrip().split(",")
-            for i in range(4, 11):
+            for i in range(4, 10):
                 if split[i] not in group[i]:
                     group[i].append(split[i])
 
@@ -70,18 +70,27 @@ def process_data():
     all_data = []
     y_test = []
     y_train = []
-    x_test_tmp = []
-    x_train_tmp = []
+    x_test_tmp_0 = []
+    x_test_tmp_1 = []
+    x_train_tmp_0 = []
+    x_train_tmp_1 = []
+    x_test_final = []
+    x_train_final = []
 
     with open("./data/test.csv") as f:
         for lines in f.readlines():
             split = lines.rstrip().split(",")
-            tmp_x = []
+            tmp_x_0 = []
+            tmp_x_1 = []
             y_test.append(group[9].index(split[9]))
-            for i in range(7):
-                tmp_x.append(group[i].index(split[i]))
-            all_data.append(tmp_x)
-            x_test_tmp.append(tmp_x)
+            for i in range(4):
+                tmp_x_0.append(split[i])
+            tmp_x_0 = map(float, tmp_x_0)
+            x_test_tmp_0.append(tmp_x_0)
+            for i in range(4, 9):
+                tmp_x_1.append(group[i].index(split[i]))
+            all_data.append(tmp_x_1)
+            x_test_tmp_1.append(tmp_x_1)
         f.close()
 
     y_test = np.array(y_test)
@@ -91,25 +100,43 @@ def process_data():
     with open("./data/train.csv") as f:
         for lines in f.readlines():
             split = lines.rstrip().split(",")
-            tmp_x = []
+            tmp_x_0 = []
+            tmp_x_1 = []
             y_train.append(group[9].index(split[9]))
-            for i in range(7):
-                tmp_x.append(group[i].index(split[i]))
-            all_data.append(tmp_x)
-            x_train_tmp.append(tmp_x)
+            for i in range(4):
+                tmp_x_0.append(split[i])
+            tmp_x_0 = map(float, tmp_x_0)
+            x_train_tmp_0.append(tmp_x_0)
+            for i in range(4, 9):
+                tmp_x_1.append(group[i].index(split[i]))
+            all_data.append(tmp_x_1)
+            x_train_tmp_1.append(tmp_x_1)
         f.close()
 
-    # y_train = np.array(y_train)
-    # print y_train.shape
-    # np.savetxt("./data/y_train", y_train)
+    y_train = np.array(y_train)
+    print y_train.shape
+    np.savetxt("./data/y_train", y_train)
 
     enc = preprocessing.OneHotEncoder()
     enc.fit(all_data)
 
+    x_test = enc.transform(x_test_tmp_1).toarray()
+    x_train = enc.transform(x_train_tmp_1).toarray()
+
+    for i in range(len(x_test_tmp_0)):
+        x_test_final.append(x_test_tmp_0[i] + x_test[i].astype(int).tolist())
+    result = np.array(x_test_final)
+    print result.shape
+    np.savetxt("./data/x_test", result)
+
+    for i in range(len(x_train_tmp_0)):
+        x_train_final.append(x_train_tmp_0[i] + x_train[i].astype(int).tolist())
+    result = np.array(x_train_final)
+    print result.shape
+    np.savetxt("./data/x_test", result)
 
 
-
-
+process_data()
 
 
 
