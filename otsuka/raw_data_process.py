@@ -51,13 +51,13 @@ def merge_files():
 def process_data():
     group = [[], [], [], [], [], [], [], [], [], []]
 
-    with open("./data/test.csv") as f:
+    with open("./data/test") as f:
         for lines in f.readlines():
             split = lines.rstrip().split(",")
             for i in range(4, 10):
                 if split[i] not in group[i]:
                     group[i].append(split[i])
-    with open("./data/train.csv") as f:
+    with open("./data/train") as f:
         for lines in f.readlines():
             split = lines.rstrip().split(",")
             for i in range(4, 10):
@@ -77,7 +77,7 @@ def process_data():
     x_test_final = []
     x_train_final = []
 
-    with open("./data/test.csv") as f:
+    with open("./data/test") as f:
         for lines in f.readlines():
             split = lines.rstrip().split(",")
             tmp_x_0 = []
@@ -97,7 +97,7 @@ def process_data():
     print y_test.shape
     np.savetxt("./data/y_test", y_test)
 
-    with open("./data/train.csv") as f:
+    with open("./data/train") as f:
         for lines in f.readlines():
             split = lines.rstrip().split(",")
             tmp_x_0 = []
