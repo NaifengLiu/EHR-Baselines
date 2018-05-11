@@ -33,8 +33,17 @@ print "confusion matrix"
 for i in order:
     print tmp[i]
 
+result_prob = np.loadtxt("./result/y_result_prob")
 
+prob = np.sum(result_prob, axis=0)
 
+tmp = []
+
+for i in order:
+    tmp.append(prob[i])
+
+print "chaid matrix"
+print tmp
 
 
 
